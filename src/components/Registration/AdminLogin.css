@@ -1,0 +1,257 @@
+/* ================================
+   General Layout
+=================================== */
+.adminLogin-main {
+  padding-top: 15vh;
+}
+
+.adminLogin-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.adminLogin-image-container {
+  width: 45%;
+}
+
+.adminLogin-image-container img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.adminLogin-form-container {
+  width: 52%;
+  font-family: Arial, sans-serif;
+}
+
+/* ================================
+   Headings & Role Switch Links
+=================================== */
+.adminLogin-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #603c86;
+  margin-bottom: 1rem;
+}
+
+.adminLogin-heading span {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+/* Role switching */
+.active-link {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.inactive-link {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.inactive-link:hover {
+  background-color: #e9ecef;
+}
+
+/* ================================
+   Form Styling
+=================================== */
+.adminSec-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.adminLogin-form-group {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.adminSec-container label {
+ display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #603c86;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.adminSec-container .adminLogin-form-input,
+.adminSec-container .adminLogin-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.adminSec-container .adminLogin-form-input:focus,
+.adminSec-container .adminLogin-form-input:focus {
+  border-color: #603c86;
+  box-shadow: 0 0 5px rgba(96, 60, 134, 0.5);
+  outline: none;
+}
+
+.adminLogin-details-form {
+  text-align: left;
+}
+
+/* Password toggle */
+.adminLogin-password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #603c86;
+}
+
+.eye-icon:hover {
+  color: #d06601;
+}
+
+/* ================================
+   Buttons
+=================================== */
+.adminLogin-login-buttons {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+
+.adminLogin-login-buttons {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+/* Primary & Secondary Buttons */
+.adminLogin-button.primary {
+  background: #007bff;
+}
+
+.adminLogin-button.primary:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.adminLogin-button.secondary {
+  background: #6c757d;
+}
+
+.adminLogin-button.secondary:hover {
+  background: #5a6268;
+}
+
+/* ================================
+   Re-authentication Styling
+=================================== */
+.reauth-notification {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 193, 7, 0.05));
+  border: 2px solid #ffc107;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.reauth-badge {
+  background: #ffc107;
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.current-role {
+  background: rgba(0, 123, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 10px 0;
+  border-left: 3px solid #007bff;
+}
+
+.reauth-info {
+  background: #f8f9fa;
+  border-left: 4px solid #28a745;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.reauth-info p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reauth-info i {
+  color: #28a745;
+}
+
+.reauth-title {
+  color: #ffc107;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ================================
+   Responsive Design
+=================================== */
+@media (max-width: 768px) {
+  .adminLogin-container {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .adminLogin-image-container,
+  .adminLogin-form-container {
+    width: 100%;
+  }
+
+  .adminLogin-image-container img {
+    max-height: 400px;
+  }
+
+  .adminLogin-login-buttons {
+    gap: 8px;
+  }
+
+  .reauth-notification {
+    padding: 15px;
+    margin: 10px;
+  }
+}

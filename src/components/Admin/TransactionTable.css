@@ -1,0 +1,143 @@
+/* components/Admin/table.css */
+.table-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.table-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  text-align: left;
+  padding: 12px 15px;
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table-row {
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.2s ease;
+}
+
+.table-row:hover {
+  background-color: #f8f9fa;
+}
+
+.table-cell {
+  padding: 12px 15px;
+  color: #495057;
+}
+
+/* Base status style */
+.status {
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+/* Existing */
+.status.approved {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border: 1px solid #badbcc;
+}
+
+.status.pending {
+  color: #664d03;
+  background-color: #fff3cd;
+  border: 1px solid #ffecb5;
+}
+
+/* ✅ New ones */
+.status.processing {
+  color: #084298;
+  background-color: #cfe2ff;
+  border: 1px solid #b6d4fe;
+}
+
+.status.completed {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.status.cancelled {
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+}
+
+
+/* Dark mode styles */
+
+.admin-dashboard.dark .status.processing {
+  color: #9ec5fe;
+  background-color: #1e3a5f;
+  border: 1px solid #2c5282;
+}
+
+.admin-dashboard.dark .status.completed {
+  color: #9fefb7;
+  background-color: #1c3b2d;
+  border: 1px solid #2d5e45;
+}
+
+.admin-dashboard.dark .status.cancelled {
+  color: #fca5a5;
+  background-color: #4a1f23;
+  border: 1px solid #6b2c30;
+}
+.admin-dashboard.dark .table-container {
+  background-color: #2d3748;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.admin-dashboard.dark .table-title {
+  color: #e2e8f0;
+}
+
+.admin-dashboard.dark .table-header {
+  background-color: #4a5568;
+  color: #e2e8f0;
+  border-bottom: 2px solid #718096;
+}
+
+.admin-dashboard.dark .table-row {
+  border-bottom: 1px solid #718096;
+}
+
+.admin-dashboard.dark .table-row:hover {
+  background-color: #4a5568;
+}
+
+.admin-dashboard.dark .table-cell {
+  color: #e2e8f0;
+}
+
+.admin-dashboard.dark .status.approved {
+  color: #9fefb7;
+  background-color: #1c3b2d;
+  border: 1px solid #2d5e45;
+}
+
+.admin-dashboard.dark .status.pending {
+  color: #fef08a;
+  background-color: #4d3d0f;
+  border: 1px solid #6b560e;
+}

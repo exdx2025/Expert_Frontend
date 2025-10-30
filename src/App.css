@@ -1,0 +1,109 @@
+/* App.css */
+@import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "El Messiri", serif;
+  /* color: black; */
+}
+
+.App {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* App.css */
+
+/* Light mode (default) */
+.App {
+  text-align: center;
+}
+
+/* Dark mode styles */
+.App.dark {
+  background-color: #111;
+  color: rgb(156, 156, 156);
+}
+
+/* Dark mode for toast notifications */
+.App.dark .Toastify__toast {
+  background-color: #2d3748;
+  color: #e2e8f0;
+}
+
+.App.dark .Toastify__toast-body {
+  color: #e2e8f0;
+}
+
+.App.dark .Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode for general elements */
+.App.dark .navbar {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.App.dark .footer {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+.App.dark a {
+  color: #63b3ed;
+}
+
+.App.dark a:hover {
+  color: #90cdf4;
+}
+
+.App.dark input,
+.App.dark select,
+.App.dark textarea {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border-color: #4a5568;
+}
+
+.App.dark button {
+  background-color: #4a5568;
+  color: #e2e8f0;
+}
+
+.App.dark button:hover {
+  background-color: #2d3748;
+}
+
+/* Add more dark mode styles as needed for your specific components */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50; /* Ensure it's on top of other elements */
+  height: 4rem; /* Match your navbar height */
+}
+
+/* Add padding to the content to ensure it doesn't overlap the navbar */
+.content {
+  padding-top: 4rem; /* Adjust based on the height of your navbar */
+  margin: 0;
+}
+
+body {
+  font-family: "El Messiri", serif;
+  background-color: #f8f8f8;
+
+}
+
+/* Optionally, for mobile responsiveness, you can add a media query */
+@media (max-width: 768px) {
+  .content {
+    padding-top: 3.5rem; /* Adjust for smaller screen sizes if necessary */
+  }
+}

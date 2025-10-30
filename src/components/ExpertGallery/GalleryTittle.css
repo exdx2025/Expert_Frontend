@@ -1,0 +1,146 @@
+/* Main Section */
+.expert-gallery {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f7fa;
+  padding-top: 17vh;
+}
+
+/* Banner Styles */
+.gallery-banner {
+  position: relative;
+  text-align: center;
+  padding: 4rem 1rem;
+  background-image: url('./expert 1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* For parallax effect */
+  color: white;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.gallery-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.3rem;
+  margin: 0 0 0.5rem;
+  font-weight: 800;
+  color: #ff6b35; /* Orange-red color */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #f7f7f7;
+  margin: 0;
+}
+
+/* Image Grid Layout */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Image Card Styles */
+.image-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  aspect-ratio: 4/3; /* Maintain consistent aspect ratio */
+}
+
+.image-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.image-card:hover .gallery-image {
+  transform: scale(1.1);
+}
+
+/* Image Overlay */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .expert-gallery {
+    padding-top: 12vh;
+  }
+
+  .gallery-banner {
+    padding: 3rem 1rem;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-heading {
+    font-size: 2rem;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+}

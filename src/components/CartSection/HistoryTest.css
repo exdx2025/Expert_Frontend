@@ -1,0 +1,336 @@
+/* HistoryTest.css */
+.history-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 80vh;
+}
+
+.empty-history {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin: 40px 0;
+}
+
+.empty-history p {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.browse-tests-btn {
+  display: inline-block;
+  background: #2c7be5;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.browse-tests-btn:hover {
+  background: #1a68d1;
+  text-decoration: none;
+  color: white;
+}
+
+.booking-list {
+  display: grid;
+  gap: 24px;
+}
+
+.booking-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.booking-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.booking-icon {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.booking-info h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.booking-date {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.booking-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.status-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Tests Section */
+.tests-section {
+  padding: 24px;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.tests-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #495057;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.tests-icon {
+  color: #6c757d;
+}
+
+.tests-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.test-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #e9ecef;
+}
+
+.test-item.has-offer {
+  border-left-color: #e74c3c;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff5f5 100%);
+}
+
+.test-main-info {
+  flex: 1;
+}
+
+.test-main-info h4 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.test-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.expert-badge {
+  background: #3498db;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.offer-badge {
+  background: #e74c3c;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.offer-icon {
+  font-size: 0.7rem;
+}
+
+.test-pricing {
+  text-align: right;
+  min-width: 150px;
+}
+
+.price-line {
+  margin-bottom: 4px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.final-price {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.contrast-note {
+  color: #666;
+  font-size: 0.8rem;
+  margin-left: 8px;
+}
+
+.quantity-info {
+  color: #6c757d;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* Booking Summary */
+.booking-summary {
+  padding: 20px 24px;
+  background: #f8f9fa;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.summary-label {
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.original-total {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 1rem;
+}
+
+.discount-row {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.discount-amount {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.total-row {
+  border-top: 2px solid #dee2e6;
+  padding-top: 12px;
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
+
+.final-total {
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.savings-banner {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Status icons */
+.status-completed { color: #28a745; }
+.status-cancelled { color: #dc3545; }
+.status-pending { color: #ffc107; }
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .history-container {
+    padding: 15px;
+  }
+  
+  .booking-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .booking-status {
+    align-self: flex-end;
+  }
+  
+  .tests-section {
+    padding: 16px;
+  }
+  
+  .test-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .test-pricing {
+    text-align: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .booking-summary {
+    padding: 16px;
+  }
+}
+
+/* Cart2.css additions (keep these) */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.history-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2c7be5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.history-link:hover {
+  text-decoration: underline;
+}

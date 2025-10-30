@@ -1,0 +1,135 @@
+/* components/Admin/SessionTimeoutModal.css */
+.session-timeout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+}
+
+.session-timeout-modal {
+  background: white;
+  border-radius: 10px;
+  padding: 0;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalAppear 0.3s ease-out;
+}
+
+.session-timeout-header {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+.session-timeout-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.session-timeout-body {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.warning-icon {
+  font-size: 3rem;
+  color: #ffc107;
+  margin-bottom: 15px;
+}
+
+.session-timeout-body p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.session-timeout-progress {
+  width: 100%;
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.session-timeout-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #dc3545, #ffc107);
+  transition: width 1s linear;
+  border-radius: 3px;
+}
+
+.session-timeout-footer {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-top: 1px solid #dee2e6;
+}
+
+.session-timeout-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.logout-btn:hover {
+  background: #5a6268;
+}
+
+.continue-btn {
+  background: #007bff;
+  color: white;
+}
+
+.continue-btn:hover {
+  background: #0056b3;
+}
+
+.continue-btn:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+.admin-dashboard.dark .session-timeout-modal {
+  background: #2d3748;
+  color: #e2e8f0;
+}
+
+.admin-dashboard.dark .session-timeout-header {
+  background: #742a2a;
+  color: #fed7d7;
+}
+
+.admin-dashboard.dark .session-timeout-progress {
+  background: #4a5568;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

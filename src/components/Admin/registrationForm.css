@@ -1,0 +1,295 @@
+/* RegistrationForm.css */
+.adminreg-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header Styles */
+.adminreg-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.adminreg-main-title {
+  font-size: 2.5rem;
+  color: #603c86;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.adminreg-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Services Grid */
+.adminreg-services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.adminreg-service-card {
+  flex: 0 1 220px;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 10px;
+  text-align: center;
+  cursor: pointer;
+  background: #fff;
+  color: #444;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Changed to space-between for better alignment */
+  align-items: center;
+}
+
+.adminreg-service-card:hover {
+  border-color: #eb7801;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(235, 120, 1, 0.1);
+}
+
+.adminreg-service-card-active {
+  border-color: #eb7801;
+  background: rgba(235, 120, 1, 0.07);
+  box-shadow: 0 0 8px rgba(235, 120, 1, 0.2);
+}
+
+.adminreg-service-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #603c86;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.adminreg-service-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #603c86;
+  margin-bottom: 4px;
+  text-align: center;
+  flex-grow: 1; /* Allow title to take available space */
+  display: flex;
+  align-items: center;
+}
+
+/* Fixed Arrow Alignment */
+.adminreg-service-arrow {
+  color: #eb7801;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: auto; /* Push arrow to bottom */
+  align-self: flex-end; /* Align to right side */
+}
+
+.adminreg-service-card:hover .adminreg-service-arrow {
+  transform: translateX(5px);
+}
+
+/* Simplified Form Section - No Box */
+.adminreg-form-section-simple {
+  background: transparent;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.adminreg-form-header-simple {
+  margin-bottom: 30px;
+}
+
+.adminreg-form-title-simple {
+  font-size: 1.8rem;
+  color: #eb7801;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.adminreg-form-underline {
+  height: 3px;
+  background: linear-gradient(135deg, #eb7801, #ff9c33);
+  width: 100px;
+  border-radius: 2px;
+}
+
+/* Simplified Form */
+.adminreg-form-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Form Grid Layout */
+.adminreg-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.adminreg-form-section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.adminreg-section-title {
+  font-size: 1.2rem;
+  color: #603c86;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* Form Elements */
+.adminreg-form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.adminreg-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.adminreg-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.adminreg-input,
+.adminreg-select {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 0.9rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.adminreg-input:focus,
+.adminreg-select:focus {
+  outline: none;
+  border-color: #eb7801;
+  box-shadow: 0 0 0 3px rgba(235, 120, 1, 0.1);
+}
+
+.adminreg-input::placeholder {
+  color: #999;
+}
+
+/* Form Actions */
+.adminreg-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.adminreg-button-submit {
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #eb7801, #ff9c33);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.adminreg-button-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(235, 120, 1, 0.4);
+}
+
+.adminreg-button-cancel {
+  padding: 12px 25px;
+  background: #f8f9fa;
+  color: #603c86;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #603c86;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.adminreg-button-cancel:hover {
+  background: #603c86;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .adminreg-container {
+    padding: 15px;
+  }
+
+  .adminreg-main-title {
+    font-size: 2rem;
+  }
+
+  .adminreg-services-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .adminreg-service-card {
+    flex: 0 1 auto;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .adminreg-form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .adminreg-form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .adminreg-form-header-simple {
+    text-align: center;
+  }
+
+  .adminreg-form-underline {
+    margin: 0 auto;
+  }
+
+  .adminreg-form-actions {
+    flex-direction: column;
+  }
+
+  .adminreg-button-submit,
+  .adminreg-button-cancel {
+    width: 100%;
+    min-width: auto;
+  }
+}

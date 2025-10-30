@@ -1,0 +1,173 @@
+.admin-cart-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admincart-search-bar {
+  position: relative;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.admincart-search-bar input {
+  width: 100%;
+  padding: 10px 15px 10px 35px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.admincart-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+}
+
+/* Add these to your AdminCart.css */
+
+.user-cart-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+.user-info {
+  flex: 1;
+  border-right: 1px solid #eee;
+  padding-right: 20px;
+}
+
+.user-info h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.user-info p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.tests-list {
+  flex: 2;
+}
+
+.tests-list h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.tests-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tests-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
+
+.tests-list li div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: #666;
+  font-size: 14px;
+}
+
+.status-control {
+  margin-top: 15px;
+}
+
+.status-select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #fff;
+  margin-top: 5px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.cart-items-table {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.no-items {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+  font-size: 18px;
+}
+
+/* AdminCart.css - Add these styles */
+.pricing-info {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.pricing-info p {
+  margin: 5px 0;
+}
+
+.test-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9em;
+}
+
+.discounted-price {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.offer-badge {
+  background: #e74c3c;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  display: inline-block;
+}
+
+.contrast-price {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.expert-badge {
+  background: #3498db;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.offer-item {
+  border-left: 3px solid #e74c3c;
+  padding-left: 10px;
+}

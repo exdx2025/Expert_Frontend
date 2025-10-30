@@ -1,0 +1,546 @@
+/* Admin Dashboard Layout */
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+}
+
+/* Top Navigation Bar */
+.admin-navbar {
+  height: 50px;
+  border-bottom: 0.5px solid rgb(231, 228, 228);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 250px;
+  background: white;
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: left 0.3s ease;
+}
+
+.admin-navbar .wrapper {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-navbar .search {
+  display: flex;
+  align-items: center;
+  border: 0.5px solid lightgray;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: white;
+}
+
+.admin-navbar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-left: 5px;
+  width: 150px;
+  
+  &::placeholder {
+    font-size: 12px;
+    color: #999;
+  }
+}
+
+.admin-navbar .items {
+  display: flex;
+  align-items: center;
+}
+
+.admin-navbar .item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  position: relative;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.admin-navbar .icon {
+  font-size: 18px;
+  color: #555;
+  margin-right: 5px;
+}
+
+.admin-navbar .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.admin-navbar .counter {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+/* Sidebar Styling */
+.admin-sidebar {
+  width: 250px;
+  background-color: white;
+  color: #555;
+  padding: 0;
+  position: fixed;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px solid rgb(230, 227, 227);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 101;
+  transition: width 0.3s ease;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 0.5px solid rgb(230, 227, 227);
+  text-align: center;
+}
+
+.admin-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  object-fit: cover;
+  border: 2px solid #7451f8;
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #6439ff;
+  text-align: center;
+}
+
+/* Sidebar Links - All text aligned to start */
+.sidebar-links {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  text-align: start;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 10px;
+  font-weight: bold;
+  color: #999;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  text-align: start;
+  letter-spacing: 1px;
+}
+
+.sidebar-link {
+  font-size: 14px;
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #555;
+  display: flex;
+  align-items: center;
+  margin: 2px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-align: start;
+  justify-content: flex-start;
+}
+
+.sidebar-link:hover {
+  background-color: #ece8ff;
+  color: #7451f8;
+}
+
+.sidebar-link .icon {
+  font-size: 18px;
+  color: #7451f8;
+  margin-right: 10px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+  padding-left: 10px;
+}
+
+/* Dropdown Container */
+.dropdown-container {
+  display: none;
+  margin-left: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 5px 0;
+  border-left: 2px solid #ece8ff;
+  text-align: start;
+}
+
+.dropdown-container.show {
+  display: block;
+}
+
+.dropdown-item {
+  font-size: 13px;
+  padding: 10px 20px;
+  color: #555;
+  text-decoration: none;
+  display: block;
+  transition: background 0.3s ease;
+  text-align: start;
+}
+
+.dropdown-item:hover {
+  background-color: #ece8ff;
+  color: #7451f8;
+}
+
+/* Content Area */
+.admin-content {
+  margin-left: 250px;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f7f9fc;
+  flex: 1;
+  transition: margin-left 0.3s ease;
+  overflow-y: auto;
+  min-height: calc(100vh - 50px);
+}
+
+.admin-content h1 {
+  color: #2d3e50;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+.admin-content p {
+  color: #7f8c8d;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: start;
+}
+
+/* Active Links */
+.sidebar-link.active,
+.dropdown-item.active {
+  background-color: #ece8ff;
+  color: #7451f8;
+}
+
+/* Sign Out Button */
+.sidebar-link-signout {
+  padding: 12px 15px;
+  background-color: transparent;
+  color: #555;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 10px;
+  border-radius: 6px;
+  text-align: start;
+  justify-content: flex-start;
+}
+
+.sidebar-link-signout .icon {
+  color: #ff4d4d;
+}
+
+.sidebar-link-signout:hover {
+  background-color: #ffe8e8;
+  color: #ff4d4d;
+}
+
+.sidebar-link-signout:hover .icon {
+  color: #ff4d4d;
+}
+
+/* Divider Line */
+.sidebar-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 10px 15px;
+}
+
+/* Dark Mode Styles */
+.admin-dashboard.dark {
+  background-color: #333;
+  color: rgb(156, 156, 156);
+}
+
+.admin-dashboard.dark .admin-sidebar {
+  background-color: #333;
+  border-right: 0.5px solid #333;
+}
+
+.admin-dashboard.dark .sidebar-header {
+  border-bottom: 0.5px solid #333;
+}
+
+.admin-dashboard.dark .sidebar-title {
+  color: #999;
+}
+
+.admin-dashboard.dark .sidebar-link {
+  color: rgb(156, 156, 156);
+}
+
+.admin-dashboard.dark .sidebar-link:hover {
+  background-color: #1a1a1a;
+  color: #b1a1ff;
+}
+
+.admin-dashboard.dark .sidebar-link .icon {
+  color: #999;
+}
+
+.admin-dashboard.dark .dropdown-container {
+  background-color: #1a1a1a;
+  border-left: 2px solid #333;
+}
+
+.admin-dashboard.dark .dropdown-item {
+  color: rgb(156, 156, 156);
+}
+
+.admin-dashboard.dark .dropdown-item:hover {
+  background-color: #1a1a1a;
+  color: #b1a1ff;
+}
+
+.admin-dashboard.dark .admin-content {
+  background-color: #1a1a1a;
+  color: rgb(156, 156, 156);
+}
+
+.admin-dashboard.dark .admin-content h1 {
+  color: rgb(156, 156, 156);
+}
+
+/* Dark mode styles for the admin dashboard */
+.admin-dashboard.dark .admin-navbar {
+  background-color: #1a202c;
+  border-bottom: 0.5px solid #333;
+  color: #e2e8f0;
+}
+
+.admin-dashboard.dark .admin-navbar .search {
+  border-color: #4a5568;
+  background-color: #2d3748;
+}
+
+.admin-dashboard.dark .admin-navbar input {
+  color: #e2e8f0;
+}
+
+.admin-dashboard.dark .admin-navbar input::placeholder {
+  color: #a0aec0;
+}
+
+.admin-dashboard.dark .admin-navbar .icon {
+  color: #e2e8f0;
+}
+
+.admin-dashboard.dark .admin-navbar .item {
+  color: #e2e8f0;
+}
+
+/* Ensure the dark mode is applied to the entire app when dark mode is enabled */
+body.dark {
+  background-color: #333;
+  color: rgb(156, 156, 156);
+}
+
+body.dark .Toastify__toast {
+  background-color: #2d3748;
+  color: #e2e8f0;
+}
+
+body.dark .Toastify__toast-body {
+  color: #e2e8f0;
+}
+
+.admin-dashboard.dark .admin-navbar .icon {
+  color: #999;
+}
+
+.admin-dashboard.dark .sidebar-divider {
+  background-color: #333;
+}
+
+.admin-dashboard.dark .admin-navbar input::placeholder {
+  color: #777;
+}
+
+/* Loading styles */
+.admin-dashboard-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.loading-spinner {
+  font-size: 18px;
+  color: #007bff;
+}
+
+.dark .admin-dashboard-loading {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .admin-sidebar {
+    width: 230px;
+  }
+  
+  .admin-navbar {
+    left: 230px;
+  }
+
+  .admin-content {
+    margin-left: 230px;
+    padding: 18px;
+  }
+
+  .sidebar-title {
+    font-size: 16px;
+  }
+
+  .admin-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .sidebar-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 200px;
+  }
+  
+  .admin-navbar {
+    left: 200px;
+  }
+
+  .admin-content {
+    margin-left: 200px;
+    padding: 15px;
+  }
+
+  .admin-navbar .item {
+    margin-right: 15px;
+  }
+
+  .admin-navbar .search input {
+    width: 100px;
+  }
+
+  .sidebar-title {
+    font-size: 15px;
+  }
+
+  .admin-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .sidebar-link {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .admin-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  
+  .admin-navbar {
+    left: 0;
+    right: 0;
+  }
+
+  .admin-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 102;
+    background: #7451f8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-navbar .items .item {
+    margin-right: 10px;
+  }
+  
+  .admin-navbar .item:not(:last-child):not(:has(.avatar)) {
+    display: none;
+  }
+  
+  .admin-content {
+    padding: 10px;
+  }
+  
+  .admin-navbar .search {
+    display: none;
+  }
+}
