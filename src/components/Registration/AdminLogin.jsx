@@ -28,17 +28,17 @@ function AdminLogin() {
   const roleCredentials = {
     admin: {
       username: "admin",
-      password: "ad123",
+      password: "exdxadmin@2025",
       displayName: "Admin",
     },
     account: {
       username: "account",
-      password: "a123",
+      password: "exdxaccount@2025",
       displayName: "Account",
     },
     reception: {
       username: "reception",
-      password: "r123",
+      password: "exdxreception@2025",
       displayName: "Reception",
     },
   };
