@@ -96,8 +96,13 @@ const Navbar2 = () => {
                 <Link to="/special-test/eeg">EEG</Link>
               </li>
               <li>
-                <Link to="/special-test/pulmonary-function-test">
-                  Pulmonary Function Test
+                <Link to="/special-test/cardiac-ct">
+                  Cardiac-CT
+                </Link>
+              </li>
+              <li>
+                <Link to="/special-test/nerve-conduction">
+                 Nerve-Conduction
                 </Link>
               </li>
             </ul>
@@ -263,10 +268,19 @@ const Navbar2 = () => {
                   </li>
                   <li>
                     <Link
-                      to="/special-test/pulmonary-function-test"
+                      to="/special-test/cardiac-ct"
                       onClick={closeSidebar}
                     >
-                      Pulmonary Function Test
+                      Cardiac-CT
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      to="/special-test/nerve-conduction"
+                      onClick={closeSidebar}
+                    >
+                      Nerve-Conduction
                     </Link>
                   </li>
                 </ul>

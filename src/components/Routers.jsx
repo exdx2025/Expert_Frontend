@@ -61,6 +61,8 @@ import AdminAdvertisement from "./Admin/AdminAdvertisement";
 import Dashboard from "./Admin/Dashboard";
 import AdminProtectedRoute from "./context/AdminProtectedRoute";
 import ENMGPage from "./pages/ENMGPage";
+import CardiacCTPage from "./pages/CardiacCTPage";
+import NerveConductionPage from "./pages/NerveConductionPage";
 
 const Routers = () => {
   return (
@@ -151,6 +153,8 @@ const Routers = () => {
       <Route path="/special-test/eeg" element={<EEGPage />} />
       <Route path="/special-test/pulmonary-function-test" element={<PulmonaryFunctionTestPage />} />
       <Route path="/special-test/enmg" element={<ENMGPage />} />
+       <Route path="/special-test/cardiac-ct" element={<CardiacCTPage/>} />
+       <Route path="/special-test/nerve-conduction" element={<NerveConductionPage/>} />
       
       {/* Health Package Routes */}
       <Route path="/health-package" element={<ExpertPackagePage />} />
