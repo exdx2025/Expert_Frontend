@@ -44,7 +44,7 @@
 .categories-list li {
   padding: 10px 15px;
   margin: 5px 0;
-  background: #603c86;
+  background: #ad70d5;
   color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -73,7 +73,7 @@
 }
 
 .alltest-search-bar i {
-  color: #603c86;
+  color: #ad70d5;
   font-size: 20px;
 }
 
@@ -82,7 +82,7 @@
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  color: #603c86;
+  color: #ad70d5;
   margin-bottom: 20px;
 }
 
@@ -150,7 +150,7 @@
 /* Original Price (Strikethrough) */
 .original-price {
   /* text-decoration: line-through; */
-  color: #603c86;
+  color: #ad70d5;
   font-size: 12px;
   font-weight: bold;
   position: relative;
@@ -191,7 +191,7 @@
 /* Discount Icon (Slightly Bigger) */
 .discount-icon {
   font-size: 15px;
-  color: #603c86;
+  color: #ad70d5;
   /* gap: -5px; */
   /* vertical-align: 5c; */
   /* border: 1px solid red; */
@@ -318,7 +318,7 @@
   font-size: 14px;
   border: none;
   border-radius: 5px;
-  background: #603c86;
+  background: #ad70d5;
   color: white;
   /* border: 1px solid red; */
   cursor: pointer;
@@ -361,9 +361,9 @@
 }
 
 .page-button.active {
-  background: #603c86; /* Active page button background */
+  background: #ad70d5; /* Active page button background */
   color: white; /* White text for active page */
-  border: 1px solid #603c86; /* Border matches the background */
+  border: 1px solid #ad70d5; /* Border matches the background */
 }
 
 .page-button:hover {

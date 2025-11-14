@@ -42,9 +42,6 @@ function AdminDashboard() {
   // Handle session timeout
   useEffect(() => {
     if (!isActive && !showTimeoutModal && role) {
-      console.log(
-        "Session timeout triggered - redirecting to re-authentication"
-      );
       setShowTimeoutModal(true);
       setCountdown(60);
 
@@ -65,8 +62,6 @@ function AdminDashboard() {
 
   // Modified: Continue session now redirects to login for re-authentication
   const handleContinueSession = () => {
-    console.log("Redirecting to re-authentication for role:", role);
-
     // Save current state for restoration after re-login
     const currentState = {
       pathname: location.pathname,
@@ -78,9 +73,7 @@ function AdminDashboard() {
     // Store the state in sessionStorage for restoration
     sessionStorage.setItem("preTimeoutState", JSON.stringify(currentState));
     sessionStorage.setItem("reauthenticationRequired", "true");
-    sessionStorage.setItem("originalRole", role); // Make sure role is stored correctly
-
-    console.log("Stored originalRole for re-auth:", role);
+    sessionStorage.setItem("originalRole", role);
 
     // Clear the modal and redirect to login
     setShowTimeoutModal(false);
@@ -94,7 +87,6 @@ function AdminDashboard() {
   };
 
   const handleAutoLogout = () => {
-    console.log("Auto-logout due to session timeout");
     localStorage.clear();
     sessionStorage.clear();
     setShowTimeoutModal(false);
@@ -120,8 +112,6 @@ function AdminDashboard() {
       const preTimeoutState = sessionStorage.getItem("preTimeoutState");
 
       if (reauthStatus === "true" && preTimeoutState) {
-        console.log("Re-authentication successful, restoring session...");
-
         try {
           const state = JSON.parse(preTimeoutState);
 
@@ -170,15 +160,10 @@ function AdminDashboard() {
   // Safe role check - handle null role
   const availableRoutes = role ? getAvailableRoutes(role) : [];
 
-  // In AdminDashboard.jsx - Add debugging
-  const canAccess = (route) => {
-    const hasAccess = availableRoutes.includes(route);
-    console.log(
-      `Checking access for route: ${route}, Role: ${role}, Has Access: ${hasAccess}`
-    );
-    console.log(`Available routes for ${role}:`, availableRoutes);
-    return hasAccess;
-  };
+  // Optimized canAccess function without spammy logging
+  const canAccess = React.useCallback((route) => {
+    return availableRoutes.includes(route);
+  }, [availableRoutes]);
 
   // Helper to determine arrow direction
   const getArrow = (section) => (activeDropdown === section ? "▲" : "▼");
@@ -279,16 +264,12 @@ function AdminDashboard() {
               className={`sidebar-link ${
                 activeDropdown === "admincart" ? "active" : ""
               }`}
-              onClick={() => {
-                console.log("Navigating to admincart...");
-                navigate("admincart");
-              }}
+              onClick={() => navigate("admincart")}
             >
               <span className="icon">
                 <i className="fas fa-shopping-cart"></i>
               </span>
               Admin Cart
-              {/* <span style={{color: 'red', marginLeft: '10px'}}>✓</span> */}
             </div>
           )}
 

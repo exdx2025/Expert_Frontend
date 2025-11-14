@@ -201,7 +201,7 @@ const Navbar = () => {
               className=" flex items-center text-white text-sm font-bold py-2 px-4 hover:text-orange-500"
             >
               <TbNotebook className="mr-1 relative -top-0 text-lg" />
-              Book Test
+              Book Service's
             </button>
             <Link
               to="/upload-prescription"
@@ -294,7 +294,7 @@ const Navbar = () => {
                 className="flex items-center text-gray-800 text-sm font-bold hover:text-orange-700"
               >
                 <TbNotebook className="mr-1 relative -top-0 text-lg" />
-                Book Test
+                Book Service's
               </button>
               <Link
                 to="/upload-prescription"

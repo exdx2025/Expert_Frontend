@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import "./CardiacCTExpectation.css";
+import "./NerveExpectation.css";
 
-const CardiacCTExpectation = () => {
+const NerveExpectation = () => {
   const [activeSection, setActiveSection] = useState("before");
 
   const handleClick = (section) => {
     setActiveSection(section);
   };
   return (
-    <div className="cardiacct-test-container">
+    <div className="nerve-test-container">
       {/* <TiTick className="tick-icon" /> */}
-      <h1>What to Expect Before, During & After a Cardiac-CT Test</h1>
+      <h1>What to Expect Before, During & After a Nerve Conduction Test</h1>
 
       {/* Section Navigation */}
-      <div className="cardiac-section-nav">
+      <div className="nrv-section-nav">
         <button
-          className={`cardiac-section-button ${
+          className={`nrv-section-button ${
             activeSection === "before" ? "active" : ""
           }`}
           onClick={() => handleClick("before")}
@@ -23,7 +23,7 @@ const CardiacCTExpectation = () => {
           Before Test
         </button>
         <button
-          className={`cardiac-section-button ${
+          className={`nrv-section-button ${
             activeSection === "during" ? "active" : ""
           }`}
           onClick={() => handleClick("during")}
@@ -31,7 +31,7 @@ const CardiacCTExpectation = () => {
           During Test
         </button>
         <button
-          className={`cardiac-section-button ${
+          className={`nrv-section-button ${
             activeSection === "after" ? "active" : ""
           }`}
           onClick={() => handleClick("after")}
@@ -41,46 +41,44 @@ const CardiacCTExpectation = () => {
       </div>
 
       {/* Section Content */}
-      <div className="cardiacct-test-sections">
+      <div className="nerve-test-sections">
         {/* Before the Test */}
         {activeSection === "before" && (
-          <div className="cardiacct-test-section">
+          <div className="nerve-test-section">
             <h2>Before the Test</h2>
             <ul>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
-                  Fasting:{" "}
+                  Avoid Lotions/Creams:{" "}
                 </span>
-                Avoid food 4–6 hours before the scan (water is usually allowed).
+                Do not apply oils or creams on skin before the test.
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
-                  Avoid Stimulants:
+                  Medication Update:
                 </span>{" "}
-                Do not consume caffeine, energy drinks, or smoke 12–24 hours
-                before.{" "}
+                Inform the doctor about medicines and medical history.
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
-                  Medication Disclosure:{" "}
+                  Stay Warm:{" "}
                 </span>
-                Inform the doctor about medicines, allergies, or kidney/thyroid
-                issues.{" "}
+                Keep your body warm as cold can affect results.
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
-                  Remove Metal Items:{" "}
+                  Avoid Alcohol:{" "}
                 </span>
-                Avoid jewelry, watches, and metal accessories before scanning.{" "}
+                Do not drink alcohol 24 hours before the test.the test.
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
                   Wear Comfortable Clothes:{" "}
                 </span>
-                Prefer loose, metal-free clothing for easy scanning.
+                Wear loose clothes for easy electrode placement.{" "}
               </li>
             </ul>
           </div>
@@ -88,40 +86,40 @@ const CardiacCTExpectation = () => {
 
         {/* During the Test */}
         {activeSection === "during" && (
-          <div className="cardiacct-test-section">
+          <div className="nerve-test-section">
             <h2>During the Test</h2>
             <ul>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
-                  IV Contrast Injection:{" "}
+                  Electrode Placement:{" "}
                 </span>
-                A contrast dye may be injected to highlight heart arteries.
+                Small electrodes are placed on the skin.
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
-                  Lie Still:{" "}
+                  Mild Electrical Pulses:{" "}
                 </span>
-                You will need to lie still while the scanner captures images.{" "}
+                Small signals are given to test nerve activity.{" "}
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
-                  Breath Holding:{" "}
+                  Stay Still:{" "}
                 </span>
-                You may be asked to hold your breath for a few seconds{" "}
+                You need to remain relaxed and still.{" "}
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
-                  Heart Rate Control:{" "}
+                  Sensation:{" "}
                 </span>
-                Medicine may be given to control heartbeat if needed.{" "}
+                You may feel mild tingling or tapping sensation
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
-                  Scan Time:{" "}
+                  Test Duration:{" "}
                 </span>
-                The procedure usually takes 5–15 minutes.{" "}
+                The test usually takes 20–30 minutes.{" "}
               </li>
             </ul>
           </div>
@@ -129,43 +127,42 @@ const CardiacCTExpectation = () => {
 
         {/* After the Test */}
         {activeSection === "after" && (
-          <div className="cardiacct-test-section">
+          <div className="nerve-test-section">
             <h2>After the Test</h2>
             <ul>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
-                  Hydration:
+                  Resume Normal Activities:
                 </span>
-                Drink plenty of water to flush out the contrast dye.{" "}
+                You can continue your routine right away.{" "}
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
-                  Resume Routine:
+                  No Recovery Time:
                 </span>{" "}
-                You can return to normal activities unless advised otherwise.
+                There is no downtime or major side effects.
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
-                  Monitor if Allergic:
+                  Clean Skin:
                 </span>{" "}
-                Report itching, dizziness, or rashes if they occur (rare cases).{" "}
+                Wipe off electrode gel if needed{" "}
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
-                  Consult for Results:
+                  Results Discussion:
                 </span>{" "}
-                Doctor will explain findings and next steps.{" "}
+                Doctor will explain the results later.{" "}
               </li>
               <li>
                 <span style={{ color: "black", fontWeight: "bold" }}>
                   {" "}
                   Follow Medical Advice:
                 </span>{" "}
-                Start prescribed medications or lifestyle changes if
-                recommended.{" "}
+                Continue treatment if recommended.{" "}
               </li>
             </ul>
           </div>
@@ -175,4 +172,4 @@ const CardiacCTExpectation = () => {
   );
 };
 
-export default CardiacCTExpectation;
+export default NerveExpectation;

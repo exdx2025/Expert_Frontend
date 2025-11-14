@@ -49,9 +49,7 @@ const ExpertServiceList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${BACKEND_URL}/api/expertServiceLists`
-        );
+        const response = await fetch(`${BACKEND_URL}/api/expertServiceLists`);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -362,27 +360,32 @@ const ExpertServiceList = () => {
           </div>
 
           {/* Test Parameters Section */}
-          <label>Test Parameters:</label>
-          <div className="expertservice-test-parameters">
-            {testParameters.map((test, index) => (
-              <div key={index} className="expertservice-checkbox-group">
+
+          <div className="expertservice-test-parameters-container">
+            <label className="expertservice-test-parameters-label">
+              Test Parameters:
+            </label>
+            <div className="expertservice-test-parameters">
+              {testParameters.map((test, index) => (
+                <div key={index} className="expertservice-checkbox-item">
+                  <input
+                    type="checkbox"
+                    id={`test-${index}`}
+                    checked={formData.selectedTests.includes(test)}
+                    onChange={() => handleCheckboxChange(test)}
+                  />
+                  <label htmlFor={`test-${index}`}>{test}</label>
+                </div>
+              ))}
+              <div className="expertservice-add-test-parameter">
                 <input
-                  type="checkbox"
-                  id={`test-${index}`}
-                  checked={formData.selectedTests.includes(test)}
-                  onChange={() => handleCheckboxChange(test)}
+                  type="text"
+                  value={newTestParameter}
+                  onChange={(e) => setNewTestParameter(e.target.value)}
+                  placeholder="Add new test"
                 />
-                <label htmlFor={`test-${index}`}>{test}</label>
+                <button onClick={handleAddTestParameter}>+ Add</button>
               </div>
-            ))}
-            <div className="expertservice-add-test-parameter">
-              <input
-                type="text"
-                value={newTestParameter}
-                onChange={(e) => setNewTestParameter(e.target.value)}
-                placeholder="Add new test"
-              />
-              <button onClick={handleAddTestParameter}>+ Add</button>
             </div>
           </div>
 
@@ -401,15 +404,15 @@ const ExpertServiceList = () => {
         <div className="expertservice-fetch-container">
           <div className="expertservice-fetch-title">Expert Package List</div>
 
-          <div className="expertservice-filter-container">
-            <input
-              type="date"
-              id="dateFilter"
-              value={dateFilter}
-              onChange={handleDateFilterChange}
-              className="expertservice-date-filter"
-            />
-          </div>
+          {/* <div className="expertservice-filter-container">
+    <input
+      type="date"
+      id="dateFilter"
+      value={dateFilter}
+      onChange={handleDateFilterChange}
+      className="expertservice-date-filter"
+    />
+  </div> */}
 
           <div className="expertservice-search-container">
             <input
@@ -433,60 +436,63 @@ const ExpertServiceList = () => {
           ) : error ? (
             <p className="error-message">{error}</p>
           ) : (
-            <table className="expertservice-fetch-table">
-              <thead>
-                <tr>
-                  <th>Expert Serial No</th>
-                  <th>Test No</th>
-                  <th>Test Name</th>
-                  <th>Old Price</th>
-                  <th>Discount Price</th>
-                  <th>Discount Percent</th>
-                  <th>How Many Test</th>
-                  <th>Report Time</th>
-                  <th>Consultation</th> {/* Added this */}
-                  <th>Tag Line</th>
-                  <th>Description</th>
-                  <th>Tests parameter</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {expertPackageList.map((expertPackageInput, index) => (
-                  <tr key={index}>
-                    <td>{expertPackageInput.expertSerialTestNo}</td>
-                    <td>{expertPackageInput.testNo}</td>
-                    <td>{expertPackageInput.testName}</td>
-                    <td>{expertPackageInput.oldPrice}</td>
-                    <td>{expertPackageInput.discountPrice}</td>
-                    <td>{expertPackageInput.discountPercent}</td>
-                    <td>{expertPackageInput.howManyTest}</td>
-                    <td>{expertPackageInput.reportTime}</td>
-                    <td>{expertPackageInput.consultation}</td>{" "}
-                    {/* Added this */}
-                    <td>{expertPackageInput.tagLine}</td>
-                    <td>{expertPackageInput.description}</td>
-                    <td>{expertPackageInput.selectedTests.join(", ")}</td>
-                    <td>
-                      <div className="actions-container">
-                        <button
-                          className="edit-button"
-                          onClick={() => handleEdit(index)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="delete-button"
-                          onClick={() => handleDelete(expertPackageInput._id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
+            <div className="expertservice-table-container">
+              {" "}
+              {/* Added this wrapper */}
+              <table className="expertservice-fetch-table">
+                <thead>
+                  <tr>
+                    <th>Expert Serial No</th>
+                    <th>Test No</th>
+                    <th>Test Name</th>
+                    <th>Old Price</th>
+                    <th>Discount Price</th>
+                    <th>Discount Percent</th>
+                    <th>How Many Test</th>
+                    <th>Report Time</th>
+                    <th>Consultation</th>
+                    <th>Tag Line</th>
+                    <th>Description</th>
+                    <th>Tests parameter</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {expertPackageList.map((expertPackageInput, index) => (
+                    <tr key={index}>
+                      <td>{expertPackageInput.expertSerialTestNo}</td>
+                      <td>{expertPackageInput.testNo}</td>
+                      <td>{expertPackageInput.testName}</td>
+                      <td>{expertPackageInput.oldPrice}</td>
+                      <td>{expertPackageInput.discountPrice}</td>
+                      <td>{expertPackageInput.discountPercent}</td>
+                      <td>{expertPackageInput.howManyTest}</td>
+                      <td>{expertPackageInput.reportTime}</td>
+                      <td>{expertPackageInput.consultation}</td>
+                      <td>{expertPackageInput.tagLine}</td>
+                      <td>{expertPackageInput.description}</td>
+                      <td>{expertPackageInput.selectedTests.join(", ")}</td>
+                      <td>
+                        <div className="actions-container">
+                          <button
+                            className="expertservice-edit-button"
+                            onClick={() => handleEdit(index)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="expertservice-delete-button"
+                            onClick={() => handleDelete(expertPackageInput._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </div>

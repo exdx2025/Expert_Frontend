@@ -9,28 +9,27 @@ const WhatisCardiacCT = () => {
         <img src={img1} alt="ENMG" />
       </div>
       <div className="WhatisCardiacCT-text">
-        <h1>What is Electroneuromyography?</h1>
+        <h1>What is Cardiac-CT?</h1>
         <div className="WhatisCardiacCT-list">
           <p>
-            Electroneuromyography (ENMG) is a diagnostic test that records and
-            analyzes the electrical activity of muscles and the nerves
-            controlling them. It helps identify nerve injuries, muscle
-            disorders, or issues with nerve-to-muscle communication for accurate
-            diagnosis and treatment planning.{" "}
+            Cardiac-CT is a non-invasive scan that uses X-rays to create
+            detailed 3D images of the heart. It helps detect blockages, calcium
+            buildup, and heart structure problems. The test is quick and often
+            uses contrast dye to view coronary arteries clearly.{" "}
           </p>
           <div className="WhatisCardiacCT-scanlist">
             <ul>
               <li>
                 <span className="check-icon">✔</span>
-                Measures how well nerves transmit signals to muscles.
+                Shows coronary artery blockages and plaque
               </li>
               <li>
                 <span className="check-icon">✔</span>
-                Helps diagnose conditions like neuropathy, myopathy, or nerve compression.
+                Checks heart structure, valves, and blood vessels
               </li>
               <li>
                 <span className="check-icon">✔</span>
-                Commonly used to evaluate muscle weakness, numbness, or tingling sensations.
+                Fast, accurate, and non-surgical procedure
               </li>
             </ul>
           </div>
@@ -40,5 +39,4 @@ const WhatisCardiacCT = () => {
   );
 };
 
-
-export default WhatisCardiacCT
+export default WhatisCardiacCT;

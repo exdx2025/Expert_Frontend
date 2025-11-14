@@ -31,7 +31,7 @@ const CardiacCTHeader = () => {
 
         if (response.ok) {
           const cardiacTests = data.data.filter(
-            (test) => test.subCategory === "MRI" || test.title.includes("MRI") // optional: also include tests with "MRI" in title
+            (test) => test.subCategory === "Cardiac CT" || test.title.includes("Cardiac CT") // optional: also include tests with "MRI" in title
           );
           setCardiacTests(cardiacTests);
         }
@@ -51,7 +51,7 @@ const CardiacCTHeader = () => {
 
       // Delay navigation to allow toast to render
       setTimeout(() => {
-        navigate("/log-in", { state: { from: "/enmg" } });
+        navigate("/log-in", { state: { from: "/cardiac-ct" } });
       }, 3000); // Delay for 1.5 seconds
       return;
     }
@@ -115,15 +115,17 @@ const CardiacCTHeader = () => {
       <div className="CardiacCTHeader-main2">
         <div className="CardiacCTHeader-box">
           <div className="CardiacCTHeader-title-box">
-            <h1 className="CardiacCTHeader-title">Electroneuromyography</h1>
+            <h1 className="CardiacCTHeader-title">Cardiac CT</h1>
             <p className="CardiacCTHeader-title2">
-              Electroneuromyography (ENMG) is a test that measures the
-              electrical activity of muscles and nerves. It helps diagnose nerve
-              damage, muscle disorders, and signal transmission problems between
-              them.{" "}
+              Cardiac CT (Cardiac Computed Tomography) is an advanced,
+              non-invasive imaging test that uses CT X-rays to capture
+              high-resolution 3D images of the heart and coronary arteries.{" "}
             </p>
             <div className="CardiacCTHeader-buttons">
-              <button className="CardiacCTHeader-btn" onClick={handleBookNowClick}>
+              <button
+                className="CardiacCTHeader-btn"
+                onClick={handleBookNowClick}
+              >
                 Book Now
               </button>
             </div>
@@ -132,7 +134,9 @@ const CardiacCTHeader = () => {
       </div>
       {showForm && (
         <div className="cardiacct-form-overlay">
-          <div className={`cardiacct-form-wrapper ${isExpanded ? "expanded" : ""}`}>
+          <div
+            className={`cardiacct-form-wrapper ${isExpanded ? "expanded" : ""}`}
+          >
             {/* Left Section: Image */}
             <div className="cardiacct-form-image-section">
               <img src={doctor} alt="Doctors" className="patient-form-image" />
@@ -147,8 +151,13 @@ const CardiacCTHeader = () => {
               >
                 <IoClose size={24} color="#f44336" />
               </button>
-              <h2 className="cardiacct-book-test-tittle">Book Your Appointment</h2>
-              <form className="cardiacct-book-test-form" onSubmit={handleBookNow}>
+              <h2 className="cardiacct-book-test-tittle">
+                Book Your Appointment
+              </h2>
+              <form
+                className="cardiacct-book-test-form"
+                onSubmit={handleBookNow}
+              >
                 <div className="cardiacct-book-form-name">
                   <label>Name:</label>
                   <input
@@ -269,6 +278,4 @@ const CardiacCTHeader = () => {
   );
 };
 
-
-
-export default CardiacCTHeader
+export default CardiacCTHeader;

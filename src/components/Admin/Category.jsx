@@ -32,6 +32,7 @@ const Category = () => {
   // Fetch all categories from the backend
   const fetchCategories = async () => {
     try {
+      setLoading(true);
       const response = await fetch(`${BACKEND_URL}/api/categories`);
       const data = await response.json();
       if (response.ok) {
@@ -41,6 +42,8 @@ const Category = () => {
       }
     } catch (err) {
       setError("Failed to fetch categories");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -79,9 +82,10 @@ const Category = () => {
     }
 
     try {
-      const url = editIndex !== null
-        ? `${BACKEND_URL}/api/categories/${categoriesList[editIndex]._id}`
-        : `${BACKEND_URL}/api/categories`;
+      const url =
+        editIndex !== null
+          ? `${BACKEND_URL}/api/categories/${categoriesList[editIndex]._id}`
+          : `${BACKEND_URL}/api/categories`;
 
       const method = editIndex !== null ? "PUT" : "POST";
 
@@ -92,7 +96,11 @@ const Category = () => {
 
       const data = await response.json();
       if (response.ok) {
-        alert(editIndex !== null ? "Category updated successfully!" : "Category created successfully!");
+        alert(
+          editIndex !== null
+            ? "Category updated successfully!"
+            : "Category created successfully!"
+        );
         fetchCategories(); // Refresh the list
         resetForm();
       } else {
@@ -111,7 +119,11 @@ const Category = () => {
     setTitle(selectedRow.title);
     setDescription(selectedRow.description);
     setCategory(selectedRow.category);
-    setImage({ preview: selectedRow.image ? `${BACKEND_URL}/uploads/${selectedRow.image}` : null });
+    setImage({
+      preview: selectedRow.image
+        ? `${BACKEND_URL}/uploads/${selectedRow.image}`
+        : null,
+    });
     setEditIndex(index);
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -120,9 +132,12 @@ const Category = () => {
   const handleDelete = async (index) => {
     const categoryId = categoriesList[index]._id;
     try {
-      const response = await fetch(`${BACKEND_URL}/api/categories/${categoryId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${BACKEND_URL}/api/categories/${categoryId}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (response.ok) {
         alert("Category deleted successfully!");
@@ -152,10 +167,15 @@ const Category = () => {
     setSearchQuery(e.target.value);
   };
 
-  // Handle date filter change
-  const handleDateFilterChange = (e) => {
-    setDateFilter(e.target.value);
-  };
+  // Filter categories based on search query
+  const filteredCategories = categoriesList.filter((item) => {
+    const search = searchQuery.toLowerCase();
+    return (
+      item.title.toLowerCase().includes(search) ||
+      item.category.toLowerCase().includes(search) ||
+      item.testNo.toLowerCase().includes(search)
+    );
+  });
 
   // Export to Excel
   const handleExportToExcel = () => {
@@ -186,7 +206,7 @@ const Category = () => {
             </div>
           </div>
 
-          {/* 1st Line: category select and add button */}
+          {/* Category Select and Add Button */}
           <div className="service-input-row ">
             <div className="service-input-group">
               <label>Category:</label>
@@ -222,7 +242,7 @@ const Category = () => {
             </div>
           </div>
 
-          {/* 2nd Line: Upload Image & Title */}
+          {/* Upload Image & Title */}
           <div className="service-input-row ">
             <div className="service-input-group">
               <label>Upload Image:</label>
@@ -247,9 +267,9 @@ const Category = () => {
             </div>
           </div>
 
-          {/* 3rd Line: Description */}
-          <div className="service-input-group">
-            <div className="service-input-row ">
+          {/* Description */}
+          <div className="service-input-row">
+            <div className="service-input-group">
               <label>Description:</label>
               <textarea
                 name="description"
@@ -260,34 +280,25 @@ const Category = () => {
             </div>
           </div>
 
-          {/* Last Line: Submit Button (Aligned to Right) */}
-          <div className=" submit-container">
+          {/* Submit Button */}
+          <div className="submit-container">
             <button className="submit-button" onClick={handleSubmit}>
               {editIndex !== null ? "Update" : "Submit"}
             </button>
           </div>
         </div>
       </div>
+
+      {/* List Section */}
       <div className="ServiceList-box2">
         <div className="ServiceList-fetch-container">
           <div className="ServiceList-fetch-title">Categories List</div>
 
-          {/* Date Filter */}
-          <div className="ServiceList-filter-container">
-            <input
-              type="date"
-              id="dateFilter"
-              value={dateFilter}
-              onChange={handleDateFilterChange}
-              className="date-filter"
-            />
-          </div>
-
-          {/* Search and Export Button in Right Side */}
+          {/* Search and Export Button */}
           <div className="ServiceList-search-container">
             <input
               type="text"
-              placeholder="Search by Name"
+              placeholder="Search by Name, Category, or Test No"
               value={searchQuery}
               onChange={handleSearchQueryChange}
               className="search-input"
@@ -303,55 +314,57 @@ const Category = () => {
           ) : error ? (
             <p>{error}</p>
           ) : (
-            <table className="ServiceList-fetch-table">
-              <thead>
-                <tr>
-                  <th>Test No</th>
-                  <th>Image</th>
-                  <th>Category</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {categoriesList.map((categoriesinput, index) => (
-                  <tr key={index}>
-                    <td>{categoriesinput.testNo}</td>
-                    <td>
-                      {categoriesinput.image ? (
-                        <img
-                          src={`${BACKEND_URL}/uploads/${categoriesinput.image}`}
-                          alt="Uploaded Preview"
-                          className="category-image"
-                        />
-                      ) : (
-                        "No image"
-                      )}
-                    </td>
-                    <td>{categoriesinput.category}</td>
-                    <td>{categoriesinput.title}</td>
-                    <td>{categoriesinput.description}</td>
-                    <td>
-                      <div className="actions-container">
-                        <button
-                          className="edit-button"
-                          onClick={() => handleEdit(index)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="delete-button"
-                          onClick={() => handleDelete(index)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
+            <div className="ServiceList-table-container">
+              <table className="ServiceList-fetch-table">
+                <thead>
+                  <tr>
+                    <th>Test No</th>
+                    <th>Image</th>
+                    <th>Category</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {filteredCategories.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.testNo}</td>
+                      <td>
+                        {item.image ? (
+                          <img
+                            src={`${BACKEND_URL}/uploads/${item.image}`}
+                            alt="Uploaded Preview"
+                            className="category-image"
+                          />
+                        ) : (
+                          "No image"
+                        )}
+                      </td>
+                      <td>{item.category}</td>
+                      <td>{item.title}</td>
+                      <td>{item.description}</td>
+                      <td>
+                        <div className="actions-container">
+                          <button
+                            className="edit-button"
+                            onClick={() => handleEdit(index)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="delete-button"
+                            onClick={() => handleDelete(index)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </div>

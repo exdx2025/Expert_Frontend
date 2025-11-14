@@ -31,7 +31,7 @@ const ENMGHeader = () => {
 
         if (response.ok) {
           const enmgTests = data.data.filter(
-            (test) => test.subCategory === "MRI" || test.title.includes("MRI") // optional: also include tests with "MRI" in title
+            (test) => test.subCategory === "ENMG" || test.title.includes("ENMG") // optional: also include tests with "MRI" in title
           );
           setEnmgTests(enmgTests);
         }

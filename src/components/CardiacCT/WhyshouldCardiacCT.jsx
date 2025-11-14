@@ -14,30 +14,28 @@ const WhyshouldCardiacCT = () => {
         <div className="whyshouldCardiacCT-box2">
           <div className="whyshouldCardiacCT-box2-write">
             <div className="whyshouldCardiacCT-header">
-              <h1>Who should get Electroneuromyography?</h1>
+              <h1>Who should get Cardiac-CT?</h1>
             </div>
           </div>
           <div className="whyshouldCardiacCT-point">
             <p>
-              Electroneuromyography (CardiacCT) is recommended for individuals
-              experiencing unexplained muscle weakness, numbness, tingling, or
-              pain. It helps doctors determine whether symptoms are caused by
-              nerve damage, muscle disorders, or signal transmission issues.
+              Cardiac-CT is suitable for people at risk of heart disease or
+              experiencing symptoms like chest pain. It is also helpful for
+              those with high blood pressure, diabetes, or abnormal heart test
+              results. Doctors may recommend it to check coronary arteries
+              before planning treatment.
             </p>
 
             <div className="whyshouldCardiacCT-checklist">
               <ul>
+                <li>Individuals with chest pain or shortness of breath</li>
                 <li>
-                  Individuals with unexplained muscle weakness, numbness, or
-                  tingling sensations.
+                  People with risk factors (BP, diabetes, smoking, family
+                  history)
                 </li>
                 <li>
-                  People suspected of having nerve injuries, neuropathy, or
-                  muscle disorders.
-                </li>
-                <li>
-                  Patients with conditions like carpal tunnel syndrome,
-                  sciatica, or nerve compression.
+                  Patients with abnormal ECG/stress test or suspected artery
+                  blockage
                 </li>
               </ul>
             </div>
@@ -48,5 +46,4 @@ const WhyshouldCardiacCT = () => {
   );
 };
 
-
-export default WhyshouldCardiacCT
+export default WhyshouldCardiacCT;

@@ -78,31 +78,27 @@ const Navbar2 = () => {
               </li>
 
               <li>
-                <Link to="/special-test/mri-mammography">MRI Mammography</Link>
-              </li>
-              <li>
-                <Link to="/special-test/mammography">Mammography</Link>
-              </li>
-              <li>
                 <Link to="/special-test/ecg">ECG</Link>
               </li>
               <li>
-                <Link to="/special-test/enmg">
-                  ENMG
-                </Link>
+                <Link to="/special-test/enmg">ENMG</Link>
               </li>
 
               <li>
                 <Link to="/special-test/eeg">EEG</Link>
               </li>
               <li>
-                <Link to="/special-test/cardiac-ct">
-                  Cardiac-CT
-                </Link>
+                <Link to="/special-test/cardiac-ct">Cardiac-CT</Link>
+              </li>
+              <li>
+                <Link to="/special-test/mri-mammography">MRI Mammography</Link>
+              </li>
+              <li>
+                <Link to="/special-test/mammography">Mammography</Link>
               </li>
               <li>
                 <Link to="/special-test/nerve-conduction">
-                 Nerve-Conduction
+                  Nerve-Conduction
                 </Link>
               </li>
             </ul>
@@ -235,6 +231,28 @@ const Navbar2 = () => {
                       TMT
                     </Link>
                   </li>
+
+                  <li>
+                    <Link to="/special-test/ecg" onClick={closeSidebar}>
+                      ECG
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/special-test/enmg" onClick={closeSidebar}>
+                      ENMG
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/special-test/eeg" onClick={closeSidebar}>
+                      EEG
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/special-test/cardiac-ct" onClick={closeSidebar}>
+                      Cardiac-CT
+                    </Link>
+                  </li>
+
                   <li>
                     <Link
                       to="/special-test/mri-mammography"
@@ -246,32 +264,6 @@ const Navbar2 = () => {
                   <li>
                     <Link to="/special-test/mammography" onClick={closeSidebar}>
                       Mammography
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/special-test/ecg" onClick={closeSidebar}>
-                      ECG
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/special-test/enmg"
-                      onClick={closeSidebar}
-                    >
-                      ENMG
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/special-test/eeg" onClick={closeSidebar}>
-                      EEG
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/special-test/cardiac-ct"
-                      onClick={closeSidebar}
-                    >
-                      Cardiac-CT
                     </Link>
                   </li>
 

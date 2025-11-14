@@ -5,378 +5,427 @@
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
   background-color: rgb(245, 245, 245);
+  display: flex;
+  gap: 30px;
+  /* align-items: flex-start; */
 }
 
 .expertservice-box1 {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 15px;
+  width: 45%;
+  max-width: 600px;
+  padding: 20px;
   border-radius: 8px;
   background-color: #ffffff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  height: auto;
-  min-height: 100px;
+  height: fit-content;
+  margin: 0;
+  overflow: hidden; /* Prevent overflow */
 }
+
+
+.expertservice-box2 {
+  width: 55%;
+  margin-top: 0;
+}
+
 .expertservice-titles {
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #333;
 }
 
 .expertservice-input-row {
   display: flex;
   align-items: center;
   gap: 15px;
-  width: 100%; /* Make sure the row takes up full width */
-  max-width: 600px; /* Optional: Set a max width */
-  margin: 10px auto;
+  width: 100%;
+  margin: 8px 0;
 }
+
 .expertservice-input-group {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
-.expertservice-input-group label {
-  font-weight: bold;
+.expertservice-input-group label,
+.expertservice-test-parameters-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #333;
+  text-align: left;
+  margin-bottom: 6px;
+  display: block;
+  /* border: 1px solid red; */
+}
+
+.expertservice-input-section {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   font-size: 0.9rem;
-}
-
-.expertservice-input-group select,
-.expertservice-input-group input,
-.expertservice-input-group textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
   width: 100%;
+  height: 36px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
-.expertservice-input-group textarea {
-  height: 60px;
-  min-height: 50px;
-  max-height: 80px;
-  resize: vertical;
+.expertservice-input-section:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
+
+
+
+
+/* Test Parameters Container */
+.expertservice-test-parameters-container {
+  width: 100%;
+  margin: 15px 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.expertservice-test-parameters-label {
+  font-weight: 500;
+  font-size: 0.85rem;
+  /* color: #333; */
+  text-align: left;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Test Parameters Grid */
 .expertservice-test-parameters {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  gap: 5px; /* Space between grid items */
-  padding: 10px;
-  /* background: #fff; */
-  border-radius: 8px;
-  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px; */
-  margin: 0 auto;
-  /* border: 1px solid red;  */
+  grid-template-columns: repeat(3, 1fr);
+  /* gap: 8px; */
+  padding: 5px;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
   width: 100%;
-  /* max-width: 600px; */
+  max-height: auto;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
-.expertservice-checkbox-group {
-  display: grid;
+/* PERFECT SOLUTION: Parent div with flexbox */
+.expertservice-checkbox-item {
+  display: flex;
   align-items: center;
-  /* gap: 3px;  */
-  /* padding: 2px; */
-  font-size: 10px; /* Adjust font size */
-  /* border: 1px solid blue;  */
-  border-radius: 5px;
-  /* background-color: #f8f8f8; */
-  /* min-height: 10px; */
-  justify-content: flex-start;
+  /* gap: 8px; */
+  padding: 2px 4px;
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 30px;
 }
 
-.expertservice-checkbox-group input {
+.expertservice-checkbox-item:hover {
+  background-color: #f0f8ff;
+  border-color: #007bff;
+}
+
+.expertservice-checkbox-item input[type="checkbox"] {
   width: 10px;
   height: 10px;
   cursor: pointer;
-  /* border: 1px solid red; */
   accent-color: #007bff;
-  /* margin: 0;  */
+  margin: auto;
+  flex-shrink: 0;
 }
 
-.expertservice-checkbox-group label {
-  font-size: 12px;
-  padding-left: 10px;
+.expertservice-checkbox-item label {
+  font-size: 10px;
   cursor: pointer;
-  /* color: #333; */
+  color: #333;
+  margin: 0;
+  line-height: 1.3;
+  user-select: none;
+  flex: 1;
   white-space: nowrap;
-  padding-top: -10px;
-  /* gap: 10px; */
-  /* margin-bottom: 2px; */
-  /* border: 1px solid red; */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Add Test Input Section */
+/* Add Test Parameter Section */
 .expertservice-add-test-parameter {
-  grid-column: span 4; /* Make input field span all 4 columns */
+  grid-column: span 3;
   display: flex;
-  /* gap: 2px; */
-  /* margin-top: 5px; */
-  /* border: 1px solid red; */
+  /* gap: 10px; */
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #ccc;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .expertservice-add-test-parameter input {
   flex: 1;
-  padding: 3px;
-  font-size: 20px;
+  padding: 4px 10px;
+  font-size: 13px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  /* border: 1px solid red; */
+  border-radius: 4px;
+  height: 30px;
+  box-sizing: border-box;
+}
+
+.expertservice-add-test-parameter input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .expertservice-add-test-parameter button {
-  background-color: #007bff;
-  /* color: white; */
+  background-color: #28a745;
+  color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 15px;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  height: 34px;
+  white-space: nowrap;
+  min-width: 70px;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .expertservice-add-test-parameter button:hover {
-  background-color: #0056b3;
+  background-color: #218838;
 }
 
+
+
+
+
 .expertservice-checkbox-group label {
-    background-color: transparent !important; /* Ensure no background appears */
-    user-select: none; /* Prevent text selection */
+    background-color: transparent !important; 
+    user-select: none; 
   }
   
   .expertservice-checkbox-group input {
     background-color: transparent !important;
-    outline: none; /* Remove focus outline */
+    outline: none; 
     border: none;
   }
-  
 
 /* Submit Button */
 .expertservice-submit-container {
   display: flex;
   justify-content: flex-end;
+  margin-top: 15px;
 }
 
 button.expertservice-submit-button {
   background-color: #28a745;
   color: #fff;
-  padding: 12px 25px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
   cursor: pointer;
+  height: 36px;
+  min-width: 100px;
 }
 
 button.expertservice-submit-button:hover {
-  opacity: 0.9;
+  background-color: #218838;
 }
 
-.expertservice-box2 {
+/* Box 2 - Table Section */
+.expertservice-fetch-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  overflow-x: auto;
+}
+
+.expertservice-fetch-title {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.8rem;
+  color: #eb7801;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+/* Filter and Search Container */
+.expertservice-filter-container {
+  margin-bottom: 15px;
+}
+
+.expertservice-date-filter {
+  padding: 6px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 32px;
+}
+
+.expertservice-search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 15px;
+}
+
+.expertservice-search-input {
+  padding: 6px 10px;
+  font-size: 14px;
+  width: 250px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  height: 32px;
+}
+
+.expertservice-excel-button {
+  background-color: #603c86;
+  color: white;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 32px;
+  white-space: nowrap;
+}
+
+.expertservice-excel-button:hover {
+  background-color: #eb7801;
+}
+
+/* Table Styles */
+.expertservice-fetch-table {
   width: 100%;
-  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
-/* Box 2 - SubCategories List */
-.expertservice-box2 {
-    width: 100%;
-    margin-top: 20px;
+.expertservice-fetch-table th,
+.expertservice-fetch-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border: 1px solid #f0f0f0;
+}
+
+.expertservice-fetch-table th {
+  background-color: #eb7801;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.expertservice-fetch-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.expertservice-fetch-table tr:hover {
+  background-color: #ececec;
+}
+
+.expertservice-fetch-table td {
+  color: #333;
+  white-space: nowrap;
+  font-size: 0.8rem;
+}
+
+.actions-container {
+  display: flex;
+  gap: 6px;
+}
+
+.expertservice-edit-button,
+.expertservice-delete-button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  height: 26px;
+  min-width: 50px;
+}
+
+.expertservice-edit-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.expertservice-delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.expertservice-edit-button:hover {
+  background-color: #218838;
+}
+
+.expertservice-delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .expertservice-main1 {
+    flex-direction: column;
   }
   
-  .expertservice-fetch-container {
-    padding: 15px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  .expertservice-box1,
+  .expertservice-box2 {
+    width: 100%;
     max-width: 100%;
-    margin: 20px auto;
-    overflow-x: auto;
   }
-  
-  .expertservice-fetch-title {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1.8rem;
-    color: #eb7801;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
-  }
-  
-  /* Filter and Search Container */
-  .expertservice-filter-container {
-    margin-bottom: 15px;
-  }
-  
-  .date-filter {
-    padding: 6px 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    width: 150px;
-  }
-  
-  .expertservice-search-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .search-input {
-    padding: 6px;
-    font-size: 14px;
-    width: 200px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-right: 8px;
-  }
-  
-  .excel-button {
-    background-color: #603c86;
-    color: white;
-    padding: 8px 12px;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .excel-button:hover {
-    background-color: #eb7801;
-    transform: scale(1.05);
-  }
-  
-  /* Table Styles */
-  .expertservice-fetch-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-  }
-  
-  .expertservice-fetch-table th,
-  .expertservice-fetch-table td {
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #f0f0f0;
-  }
-  
-  .expertservice-fetch-table th {
-    background-color: #eb7801;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .expertservice-fetch-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .expertservice-fetch-table tr:hover {
-    background-color: #ececec;
-  }
-  
-  .expertservice-fetch-table td {
-    color: #333;
-    white-space: nowrap;
-  }
-  
-  .category-image {
-    width: 50px; /* Adjust size as needed */
-    height: 50px; /* Ensure height equals width */
-    border-radius: 50%; /* Make it round */
-    object-fit: cover; /* Ensure it covers the area without distortion */
-    border: 2px solid #ccc; /* Optional: Add a border */
-  }
-  
-  .actions-container {
-    display: flex;
-    gap: 8px; /* Space between buttons */
-  }
-  
-  .edit-button,
-  .delete-button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .edit-button {
-    background-color: #28a745; /* Green color for Edit */
-    color: white;
-  }
-  
-  .delete-button {
-    background-color: #dc3545; /* Red color for Delete */
-    color: white;
-  }
-  
-  .edit-button:hover {
-    background-color: #218838; /* Darker green on hover */
-  }
-  
-  .delete-button:hover {
-    background-color: #c82333; /* Darker red on hover */
-  }
+}
 
-  .expertservice-fetch-container {
-    /* Your container styles */
+@media (max-width: 768px) {
+  .expertservice-input-row {
+    flex-direction: column;
+    gap: 8px;
   }
   
-  .expertservice-fetch-title {
-    font-size: 24px;
-    margin-bottom: 20px;
+  .expertservice-test-parameters {
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .expertservice-filter-container,
+  .expertservice-add-test-parameter {
+    grid-column: span 2;
+  }
+  
   .expertservice-search-container {
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: stretch;
   }
   
-  .expertservice-date-filter,
   .expertservice-search-input {
-    padding: 10px;
-    margin-right: 10px;
-  }
-  
-  .expertservice-excel-button {
-    padding: 10px;
-    background-color: green;
-    color: white;
-  }
-  
-  .expertservice-fetch-table {
     width: 100%;
-    border-collapse: collapse;
   }
-  
-  .expertservice-fetch-table th,
-  .expertservice-fetch-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-  
-  .expertservice-delete-button {
-    padding: 5px 10px;
-    background-color: red;
-    color: white;
-  }
-  
-  .expertservice-edit-button{
-    padding: 5px 10px;
-    background-color: rgb(2, 252, 56);
-    color: white;
-  }
+}
 
-
-
+@media (max-width: 480px) {
+  .expertservice-test-parameters {
+    grid-template-columns: 1fr;
+  }
   
+  .expertservice-add-test-parameter {
+    grid-column: span 1;
+  }
+}

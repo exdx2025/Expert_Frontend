@@ -32,7 +32,7 @@ const EEGHeader = () => {
 
         if (response.ok) {
           const eegTests = data.data.filter(
-            (test) => test.subCategory === "MRI" || test.title.includes("MRI") // optional: also include tests with "MRI" in title
+            (test) => test.subCategory === "EEG" || test.title.includes("EEG") // optional: also include tests with "MRI" in title
           );
           setEegTests(eegTests);
         }

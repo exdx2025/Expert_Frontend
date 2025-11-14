@@ -21,7 +21,7 @@ const Login = () => {
   const [isFocused, setIsFocused] = useState(false);
   const navigate = useNavigate();
   const [isVerifying, setIsVerifying] = useState(false);
-const { login } = useAuth(); // Add setUser here
+  const { login } = useAuth(); // Add setUser here
 
   // Handle input field changes
   const handleChange = (e) => {
@@ -53,14 +53,11 @@ const { login } = useAuth(); // Add setUser here
     }
 
     try {
-      const response = await axios.post(
-        `${BACKEND_URL}/person/send-otp`,
-        {
-          mobile,
-          name,
-          email,
-        }
-      );
+      const response = await axios.post(`${BACKEND_URL}/person/send-otp`, {
+        mobile,
+        name,
+        email,
+      });
 
       if (response.data.success) {
         setOtpSent(true);
@@ -88,68 +85,74 @@ const { login } = useAuth(); // Add setUser here
 
   // Handle OTP Verification
   const handleVerifyOtp = async () => {
-  if (!otp || otp.length !== 4) {
-    toast.error("Please enter a valid 4-digit OTP");
-    return;
-  }
+    if (!otp || otp.length !== 4) {
+      toast.error("Please enter a valid 4-digit OTP");
+      return;
+    }
 
-  setIsVerifying(true);
+    setIsVerifying(true);
 
-  try {
-    const { mobile, name, email } = formData;
-    const response = await axios.post(`${BACKEND_URL}/person/verify-otp`,{ mobile, otp, name, email });
+    try {
+      const { mobile, name, email } = formData;
+      const response = await axios.post(`${BACKEND_URL}/person/verify-otp`, {
+        mobile,
+        otp,
+        name,
+        email,
+      });
 
-    toast.success("Login successful!");
-   login(response.data.token, response.data.user);         // ✅ Save user in context + localStorage
-    navigate("/");                        // ✅ Go to homepage
-  } catch (err) {
-    toast.error(err.response?.data?.error || "Invalid OTP");
-  } finally {
-    setIsVerifying(false);
-  }
-};
+      toast.success("Login successful!");
+      login(response.data.token, response.data.user); // ✅ Save user in context + localStorage
+      navigate("/"); // ✅ Go to homepage
+    } catch (err) {
+      toast.error(err.response?.data?.error || "Invalid OTP");
+    } finally {
+      setIsVerifying(false);
+    }
+  };
 
   // Resend OTP
- const handleResendOtp = async () => {
-  try {
-    const { mobile, name, email } = formData;
-    setErrorMessage(""); // Clear any previous errors
-    
-    // Show loading state
-    setIsVerifying(true);
-    
-    const response = await axios.post(
-      `${BACKEND_URL}/person/send-otp`,
-      { mobile, name, email },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    );
+  const handleResendOtp = async () => {
+    try {
+      const { mobile, name, email } = formData;
+      setErrorMessage(""); // Clear any previous errors
 
-    if (response.data.success) {
-      setOtp(""); // Clear the OTP input field
-      toast.success("OTP has been resent successfully!", {
+      // Show loading state
+      setIsVerifying(true);
+
+      const response = await axios.post(
+        `${BACKEND_URL}/person/send-otp`,
+        { mobile, name, email },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.success) {
+        setOtp(""); // Clear the OTP input field
+        toast.success("OTP has been resent successfully!", {
+          position: "top-right",
+        });
+      } else {
+        throw new Error(response.data.error || "Failed to resend OTP");
+      }
+    } catch (err) {
+      console.error("Error resending OTP:", err);
+      const errorMsg =
+        err.response?.data?.error ||
+        err.message ||
+        "Failed to resend OTP. Please try again.";
+
+      setErrorMessage(errorMsg);
+      toast.error(errorMsg, {
         position: "top-right",
       });
-    } else {
-      throw new Error(response.data.error || "Failed to resend OTP");
+    } finally {
+      setIsVerifying(false);
     }
-  } catch (err) {
-    console.error("Error resending OTP:", err);
-    const errorMsg = err.response?.data?.error || 
-                    err.message || 
-                    "Failed to resend OTP. Please try again.";
-    
-    setErrorMessage(errorMsg);
-    toast.error(errorMsg, {
-      position: "top-right",
-    });
-  } finally {
-    setIsVerifying(false);
-  }
-};
+  };
 
   return (
     <div className="Login-main">
@@ -166,7 +169,7 @@ const { login } = useAuth(); // Add setUser here
           {!showOtp && !otpSent ? (
             <form className="Login-details-form" onSubmit={handleSubmit}>
               <div className="Login-form-group">
-                <label htmlFor="name">Name (Optional)</label>
+                <label htmlFor="name">Name </label>
                 <input
                   type="text"
                   id="name"
@@ -178,7 +181,7 @@ const { login } = useAuth(); // Add setUser here
               </div>
 
               <div className="Login-form-group">
-                <label htmlFor="email">Email (Optional)</label>
+                <label htmlFor="email">Email </label>
                 <input
                   type="email"
                   id="email"
@@ -190,7 +193,18 @@ const { login } = useAuth(); // Add setUser here
               </div>
 
               <div className="Login-form-group">
-                <label htmlFor="mobile">Mobile Number*</label>
+                <label htmlFor="mobile">
+                  Mobile{" "}
+                  <span
+                    style={{
+                      color: "red",
+                      fontWeight: "bold",
+                      marginLeft: "2px",
+                    }}
+                  >
+                    *
+                  </span>
+                </label>
                 <input
                   type="text"
                   id="mobile"

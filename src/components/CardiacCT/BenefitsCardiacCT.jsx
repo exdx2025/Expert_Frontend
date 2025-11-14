@@ -8,34 +8,29 @@ const BenefitsCardiacCT = () => {
       <div className="benefitsCardiacCT-content">
         <div className="benefitsCardiacCT-details">
           <div className="benefitsCardiacCT-header">
-            <h1>Benefits of Getting an Electroneuromyography</h1>
+            <h1>Benefits of Getting an Cardiac-CT</h1>
           </div>
           <div className="benefitsCardiacCTlist">
             <ul>
               <li>
                 <span className="check-icon">✔</span>
-                Accurate Diagnosis: Helps identify the exact location and type
-                of nerve or muscle damage.
+                Early detection of coronary artery blockages and heart disease
               </li>
               <li>
                 <span className="check-icon">✔</span>
-                Early Detection: Detects neuromuscular disorders in their early
-                stages for timely treatment.
+                Provides clear, high-resolution 3D images of the heart
               </li>
               <li>
                 <span className="check-icon">✔</span>
-                Guides Treatment: Provides valuable data to plan effective
-                therapies or surgeries.
+                Non-invasive and faster than traditional angiography
               </li>
               <li>
                 <span className="check-icon">✔</span>
-                Monitors Progress: Tracks recovery and treatment effectiveness
-                over time.
+                Helps assess calcium buildup and heart attack risk
               </li>
               <li>
                 <span className="check-icon">✔</span>
-                Differentiates Conditions: Distinguishes between nerve-related
-                and muscle-related problems.
+                Aids doctors in planning treatment and preventive care early
               </li>
             </ul>
           </div>
@@ -48,5 +43,4 @@ const BenefitsCardiacCT = () => {
   );
 };
 
-
-export default BenefitsCardiacCT
+export default BenefitsCardiacCT;

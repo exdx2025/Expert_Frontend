@@ -30,7 +30,7 @@
 .Login-heading {
   font-size: 2rem;
   font-weight: bold;
-  color: #603c86;
+  color: #ad70d5;
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -67,7 +67,7 @@
 
 .Login-details-form input:focus {
   outline: none;
-  border-color: #603c86;
+  border-color: #ad70d5;
   box-shadow: 0 0 0 2px rgba(96, 60, 134, 0.2);
 }
 
@@ -84,7 +84,7 @@
 .otp-label {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #603c86;
+  color: #ad70d5;
   text-align: center;         /* ✅ Center label text */
 }
 
@@ -111,13 +111,13 @@
 }
 
 .otp-box:focus {
-  border-color: #603c86;
+  border-color: #ad70d5;
   box-shadow: 0 0 5px rgba(96, 60, 134, 0.5);
 }
 
 .resend-link {
   font-size: 0.9rem;
-  color: #603c86;
+  color: #ad70d5;
   text-decoration: underline;
   cursor: pointer;
   transition: color 0.3s;
@@ -136,7 +136,7 @@
   text-align: center;
   border: none;
   border-radius: 5px;
-  background: linear-gradient(90deg, #603c86, #d06601);
+  background: #ad70d5;
   color: white;
   cursor: pointer;
   transition: all 0.3s;
@@ -145,7 +145,7 @@
 
 .Login-verify-btn:hover,
 .Login-submit-btn:hover {
-  background: linear-gradient(90deg, #4a2d6b, #b35901);
+  background:  #b35901;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -173,7 +173,7 @@
 }
 
 .create-account-link {
-  color: #603c86;
+  color: #ad70d5;
   font-weight: 500;
   text-decoration: underline;
   cursor: pointer;
@@ -186,7 +186,7 @@
 
 /* Active/Inactive Link Styling */
 .active-link {
-  color: #603c86;
+  color: #ad70d5;
   cursor: pointer;
   text-decoration: none;
   transition: color 0.3s ease;

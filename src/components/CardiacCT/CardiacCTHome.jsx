@@ -8,7 +8,7 @@ import CardiacCTExpectation from './CardiacCTExpectation'
 const CardiacCTHome = () => {
   return (
     <>
-         <CardiacCTHeader/>
+        <CardiacCTHeader/>
         <WhatisCardiacCT/>
         <BenefitsCardiacCT/>
         <WhyshouldCardiacCT/>

@@ -59,7 +59,8 @@ const useSessionTimeout = (inactiveTimeout = 5 * 60 * 1000, // 5 minutes
       const inactiveTime = currentTime - lastActivity;
       const totalTime = currentTime - loginTime;
 
-      console.log(`Session Check: Inactive for ${Math.round(inactiveTime/1000)}s, Total: ${Math.round(totalTime/1000)}s`);
+ 
+      // console.log(`Session Check: Inactive for ${Math.round(inactiveTime/1000)}s, Total: ${Math.round(totalTime/1000)}s`);
 
       // Check for inactivity timeout
       if (inactiveTime > inactiveTimeout) {
