@@ -1,4 +1,4 @@
-/* components/Admin/Dashboard.css */
+
 .dashboard {
   padding: 20px;
 }
@@ -41,7 +41,7 @@
   color: #333;
 }
 
-/* New styles for content sections */
+
 .dashboard-content {
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@
   overflow: hidden;
 }
 
-/* Dark mode styles */
+
 .admin-dashboard.dark .dashboard-title {
   color: #e2e8f0;
 }
@@ -75,7 +75,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive design */
+
 @media (max-width: 1024px) {
   .widgets-container {
     grid-template-columns: 1fr;

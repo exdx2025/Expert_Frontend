@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./viewAdmins.css"; // You can style this component as needed
+import "./viewAdmins.css";
 import { BACKEND_URL } from "../utils/Url";
 
 
@@ -10,9 +10,9 @@ function ViewAdmins() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Fetch the list of admins when the component mounts
+   
     axios
-      .get(`${BACKEND_URL}/api/create-admin`) // Assuming your backend is running on localhost:5000
+      .get(`${BACKEND_URL}/api/create-admin`) 
       .then((response) => {
         setAdmins(response.data);
         setLoading(false);

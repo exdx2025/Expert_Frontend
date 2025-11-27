@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
-import { Link } from "react-router-dom"; // Add this for navigation
+import { Link } from "react-router-dom";
 import "./ViewHomeCollection.css";
 import { BACKEND_URL } from "../utils/Url";
 
@@ -12,7 +12,6 @@ const ViewHomeCollection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
 
-  // Fetch home collection data from the backend
   const fetchHomeCollections = async () => {
     try {
       const response = await fetch(`${BACKEND_URL}/api/home-collection`);
@@ -21,7 +20,7 @@ const ViewHomeCollection = () => {
       }
       const data = await response.json();
       setHomeCollections(data);
-      setFilteredCollections(data); // Initialize filtered collections
+      setFilteredCollections(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -33,7 +32,6 @@ const ViewHomeCollection = () => {
     fetchHomeCollections();
   }, []);
 
-  // Format date for display
   const formatDate = (date) => {
     const d = new Date(date);
     const day = d.getDate().toString().padStart(2, "0");
@@ -42,7 +40,6 @@ const ViewHomeCollection = () => {
     return `${year}-${month}-${day}`;
   };
 
-  // Handle search functionality
   const handleSearch = (event) => {
     const value = event.target.value.toLowerCase().trim();
     setSearchTerm(value);
@@ -58,7 +55,6 @@ const ViewHomeCollection = () => {
     setFilteredCollections(filtered);
   };
 
-  // Handle export to Excel functionality
   const handleExportToExcel = () => {
     const transformedData = filteredCollections.map((collection, index) => ({
       "S.No": index + 1,
@@ -80,7 +76,6 @@ const ViewHomeCollection = () => {
     XLSX.writeFile(wb, "home_collection_list.xlsx");
   };
 
-  // Handle date filter functionality
   const handleDateFilter = (event) => {
     const value = event.target.value;
     setSelectedDate(value);
@@ -105,13 +100,10 @@ const ViewHomeCollection = () => {
             Home Collection Appointments
           </h2>
 
-          {/* Loading state */}
           {loading && <p>Loading data...</p>}
 
-          {/* Error state */}
           {error && <p className="error-text">{error}</p>}
 
-          {/* Search, Filter, and Export to Excel */}
           <div className="filter-actions">
             <input
               type="date"
@@ -132,14 +124,6 @@ const ViewHomeCollection = () => {
             </button>
           </div>
 
-          {/* Back to Dashboard Button */}
-          {/* <div className="button-container">
-            <Link to="/admin/dashboard" className="back-button">
-              &larr; Back to Dashboard
-            </Link>
-          </div> */}
-
-          {/* Display Home Collections in table */}
           {!loading && !error && (
             <table className="HomeCollection-table">
               <thead>

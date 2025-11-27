@@ -5,11 +5,10 @@ import { BACKEND_URL } from "../utils/Url";
 const UploadPrescriptionDashboard = () => {
   const [prescriptions, setPrescriptions] = useState([]);
   const [sortConfig, setSortConfig] = useState({
-    key: 'uploadDate',
-    direction: 'desc'
+    key: "uploadDate",
+    direction: "desc",
   });
 
-  // Define all functions before they're used
   const fetchPrescriptions = async () => {
     try {
       const response = await fetch(`${BACKEND_URL}/api/prescriptions`);
@@ -48,34 +47,33 @@ const UploadPrescriptionDashboard = () => {
   };
 
   const requestSort = (key) => {
-    let direction = 'asc';
-    if (sortConfig.key === key && sortConfig.direction === 'asc') {
-      direction = 'desc';
+    let direction = "asc";
+    if (sortConfig.key === key && sortConfig.direction === "asc") {
+      direction = "desc";
     }
     setSortConfig({ key, direction });
   };
 
   const formatDate = (dateString) => {
-    if (!dateString) return 'No date';
+    if (!dateString) return "No date";
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return 'Invalid date';
-    
-    return date.toLocaleString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+    if (isNaN(date.getTime())) return "Invalid date";
+
+    return date.toLocaleString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
-  // Now we can use the functions safely
   const sortedPrescriptions = [...prescriptions].sort((a, b) => {
-    const aValue = a[sortConfig.key] || '';
-    const bValue = b[sortConfig.key] || '';
-    
-    if (aValue < bValue) return sortConfig.direction === 'asc' ? -1 : 1;
-    if (aValue > bValue) return sortConfig.direction === 'asc' ? 1 : -1;
+    const aValue = a[sortConfig.key] || "";
+    const bValue = b[sortConfig.key] || "";
+
+    if (aValue < bValue) return sortConfig.direction === "asc" ? -1 : 1;
+    if (aValue > bValue) return sortConfig.direction === "asc" ? 1 : -1;
     return 0;
   });
 
@@ -92,14 +90,13 @@ const UploadPrescriptionDashboard = () => {
             <th>S.No</th>
             <th>Name</th>
             <th>Phone</th>
-            <th 
-              onClick={() => requestSort('uploadDate')} 
+            <th
+              onClick={() => requestSort("uploadDate")}
               className="sortable-header"
             >
               Date & Time
-              {sortConfig.key === 'uploadDate' && (
-                sortConfig.direction === 'asc' ? ' ↑' : ' ↓'
-              )}
+              {sortConfig.key === "uploadDate" &&
+                (sortConfig.direction === "asc" ? " ↑" : " ↓")}
             </th>
             <th>File</th>
             <th>Status</th>
@@ -109,13 +106,12 @@ const UploadPrescriptionDashboard = () => {
           {sortedPrescriptions.map((prescription, index) => (
             <tr key={prescription._id || index}>
               <td>{index + 1}</td>
-              <td>{prescription.name || '-'}</td>
-              <td>{prescription.mobile || '-'}</td>
+              <td>{prescription.name || "-"}</td>
+              <td>{prescription.mobile || "-"}</td>
               <td>
-                {prescription.uploadDate 
+                {prescription.uploadDate
                   ? formatDate(prescription.uploadDate)
-                  : 'No date'
-                }
+                  : "No date"}
               </td>
               <td>
                 {prescription.file ? (
@@ -126,12 +122,16 @@ const UploadPrescriptionDashboard = () => {
                   >
                     View
                   </a>
-                ) : '-'}
+                ) : (
+                  "-"
+                )}
               </td>
               <td>
                 <select
-                  value={prescription.status || 'pending'}
-                  onChange={(e) => handleStatusChange(prescription._id, e.target.value)}
+                  value={prescription.status || "pending"}
+                  onChange={(e) =>
+                    handleStatusChange(prescription._id, e.target.value)
+                  }
                 >
                   <option value="pending">Pending</option>
                   <option value="process">Process</option>

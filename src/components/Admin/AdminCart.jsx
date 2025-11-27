@@ -1,4 +1,3 @@
-// AdminCart.js
 import React, { useEffect, useState } from "react";
 import "./AdminCart.css";
 import { FaSearch } from "react-icons/fa";
@@ -27,19 +26,16 @@ const AdminCart = () => {
       }
     };
 
-    fetchAdminCarts();          
+    fetchAdminCarts();
   }, []);
 
   const handleStatusChange = async (cartId, newStatus) => {
     try {
-      const res = await fetch(
-        `${BACKEND_URL}/api/admin-carts/${cartId}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ status: newStatus }),
-        }
-      );
+      const res = await fetch(`${BACKEND_URL}/api/admin-carts/${cartId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
       if (!res.ok) throw new Error("Failed to update status");
 
       setCarts((prev) =>
@@ -59,13 +55,14 @@ const AdminCart = () => {
       cart.userName?.toLowerCase().includes(term) ||
       cart.userMobile?.includes(term) ||
       cart.userEmail?.toLowerCase().includes(term);
-    const testMatch = cart.tests?.some(test => 
+    const testMatch = cart.tests?.some((test) =>
       test.testName?.toLowerCase().includes(searchTerm.toLowerCase())
     );
     return userMatch || testMatch;
   });
 
-  if (loading) return <div className="admin-cart-container">Loading cart data…</div>;
+  if (loading)
+    return <div className="admin-cart-container">Loading cart data…</div>;
   if (error) return <div className="admin-cart-container error">{error}</div>;
 
   return (
@@ -92,21 +89,34 @@ const AdminCart = () => {
             <div key={cart._id} className="user-cart-card">
               <div className="user-info">
                 <h3>{cart.userName || "Unknown User"}</h3>
-                <p><strong>Email:</strong> {cart.userEmail || "N/A"}</p>
-                <p><strong>Mobile:</strong> {cart.userMobile || "N/A"}</p>
-                
-                {/* ✅ Only show total amount */}
+                <p>
+                  <strong>Email:</strong> {cart.userEmail || "N/A"}
+                </p>
+                <p>
+                  <strong>Mobile:</strong> {cart.userMobile || "N/A"}
+                </p>
+
                 <div className="pricing-info">
-                  <p><strong>Total Amount:</strong> ₹{cart.totalAmount?.toLocaleString() || 0}</p>
+                  <p>
+                    <strong>Total Amount:</strong> ₹
+                    {cart.totalAmount?.toLocaleString() || 0}
+                  </p>
                 </div>
-                
-                <p><strong>Date:</strong> {new Date(cart.createdAt).toLocaleString()}</p>
+
+                <p>
+                  <strong>Date:</strong>{" "}
+                  {new Date(cart.createdAt).toLocaleString()}
+                </p>
 
                 <div className="status-control">
-                  <label><strong>Status:</strong></label>
+                  <label>
+                    <strong>Status:</strong>
+                  </label>
                   <select
                     value={cart.status || "pending"}
-                    onChange={(e) => handleStatusChange(cart._id, e.target.value)}
+                    onChange={(e) =>
+                      handleStatusChange(cart._id, e.target.value)
+                    }
                     className="status-select"
                   >
                     <option value="pending">Pending</option>

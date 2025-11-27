@@ -10,14 +10,7 @@ const team = [
     designation: "Radiology Department",
     description:"Dr. Vijay N. Raj, a distinguished radiologist with an MBBS from AIMS and DMRD/DNB from Manipal Hospital, ",
   },
-  // {
-  //   id: 2,
-  //   image:
-  //     "https://res.cloudinary.com/duw27lpbe/image/upload/v1733394813/Mithun_s2henf.jpg",
-  //   name: "Dr. Mithun",
-  //   designation: "Radiology Department",
-  //   description:"Dr. Mithun Somaiah C.S., Professor and HOD of Internal Medicine at BGS GIMS, is a visionary healthcare leader. As Managing Director of Leonis Gamma Healthcare Pvt. Ltd., he spearheads the installation, operations, and management of advanced CT/MRI facilities in reputed hospitals across Karnataka. With a commitment to excellence, he combines clinical expertise with strategic innovation to elevate healthcare standards.",
-  // },
+ 
   {
     id: 3,
     image:

@@ -74,7 +74,9 @@ const SubCategory = () => {
   };
 
   useEffect(() => {
-    const savedSubCategories = JSON.parse(localStorage.getItem("subcategories"));
+    const savedSubCategories = JSON.parse(
+      localStorage.getItem("subcategories")
+    );
     if (savedSubCategories) {
       setSubCategories(savedSubCategories);
     }
@@ -84,7 +86,10 @@ const SubCategory = () => {
     if (newCategory.trim() !== "" && !subcategories.includes(newCategory)) {
       const updatedSubCategories = [...subcategories, newCategory];
       setSubCategories(updatedSubCategories);
-      localStorage.setItem("subcategories", JSON.stringify(updatedSubCategories));
+      localStorage.setItem(
+        "subcategories",
+        JSON.stringify(updatedSubCategories)
+      );
       setNewCategory("");
     } else {
       alert("Subcategory already exists or is empty!");
@@ -142,12 +147,10 @@ const SubCategory = () => {
       const data = await response.json();
       alert("SubCategory created successfully!");
 
-      // ✅ UPDATED HERE — update state instantly
       const newList = [data.data, ...subCategoriesList];
       setSubCategoriesList(newList);
       setFilteredSubCategories(newList);
 
-      // Reset form
       setExpertSerialTestNo("");
       setTestNo("");
       setTitle("");
@@ -239,13 +242,11 @@ const SubCategory = () => {
       if (response.ok) {
         alert("SubCategory updated successfully!");
 
-        // ✅ UPDATED HERE — update list instantly
         const updatedList = [...subCategoriesList];
         updatedList[editIndex] = data.data;
         setSubCategoriesList(updatedList);
         setFilteredSubCategories(updatedList);
 
-        // reset form
         setImage(null);
         setExpertSerialTestNo("");
         setTitle("");
@@ -287,7 +288,6 @@ const SubCategory = () => {
       if (response.ok) {
         alert("SubCategory deleted successfully!");
 
-        // ✅ UPDATED HERE — remove instantly
         const updatedList = subCategoriesList.filter(
           (item) => item._id !== subCategoriesList[originalIndex]._id
         );
@@ -348,7 +348,6 @@ const SubCategory = () => {
     XLSX.writeFile(wb, "subCategories.xlsx");
   };
 
-
   return (
     <div className="SubCategory-main1">
       <div className="SubCategory-list-box1" ref={formRef}>
@@ -379,10 +378,6 @@ const SubCategory = () => {
               />
             </div>
           </div>
-
-          {/* <div className="SubCategory-input-row">
-            
-          </div> */}
 
           <div className="SubCategory-input-row ">
             <div className="SubCategory-input-group">
@@ -539,15 +534,7 @@ const SubCategory = () => {
         <div className="SubCategory-fetch-container">
           <div className="SubCategory-fetch-title">Sub-Categories List</div>
 
-          <div className="SubCategory-filter-container">
-            {/* <input
-              type="date"
-              id="dateFilter"
-              value={dateFilter}
-              onChange={handleDateFilterChange}
-              className="date-filter"
-            /> */}
-          </div>
+          <div className="SubCategory-filter-container"></div>
 
           <div className="SubCategory-search-container">
             <div className="SubCategory-search-left">

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./AdminCareer.css";
 import { BACKEND_URL } from "../utils/Url";
 
-
 const AdminCareer = () => {
   const [careers, setCareers] = useState([]);
   const [formData, setFormData] = useState({
@@ -12,7 +11,7 @@ const AdminCareer = () => {
     reportsTo: "",
     overview: "",
     responsibilities: "",
-    qualifications: ""
+    qualifications: "",
   });
   const [editId, setEditId] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -38,19 +37,19 @@ const AdminCareer = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const url = editId 
+
+    const url = editId
       ? `${BACKEND_URL}/api/careers/${editId}`
       : `${BACKEND_URL}/api/careers`;
-    
+
     const method = editId ? "PUT" : "POST";
 
     try {
@@ -80,7 +79,7 @@ const AdminCareer = () => {
       reportsTo: career.reportsTo || "",
       overview: career.overview,
       responsibilities: career.responsibilities.join("\n"),
-      qualifications: career.qualifications.join("\n")
+      qualifications: career.qualifications.join("\n"),
     });
     setEditId(career._id);
   };
@@ -89,7 +88,7 @@ const AdminCareer = () => {
     if (window.confirm("Are you sure you want to delete this career?")) {
       try {
         const response = await fetch(`${BACKEND_URL}/api/careers/${id}`, {
-          method: "DELETE"
+          method: "DELETE",
         });
 
         if (response.ok) {
@@ -110,7 +109,7 @@ const AdminCareer = () => {
       reportsTo: "",
       overview: "",
       responsibilities: "",
-      qualifications: ""
+      qualifications: "",
     });
     setEditId(null);
   };
@@ -118,7 +117,7 @@ const AdminCareer = () => {
   return (
     <div className="admin-career-container">
       <h1>Career Management</h1>
-      
+
       <form onSubmit={handleSubmit} className="career-form">
         <div className="career-form-group">
           <label>Category:</label>
@@ -228,10 +227,16 @@ const AdminCareer = () => {
                   <td>{career.jobTitle}</td>
                   <td>{career.experienceLevel}</td>
                   <td>
-                    <button onClick={() => handleEdit(career)} className="edit-btn">
+                    <button
+                      onClick={() => handleEdit(career)}
+                      className="edit-btn"
+                    >
                       Edit
                     </button>
-                    <button onClick={() => handleDelete(career._id)} className="delete-btn">
+                    <button
+                      onClick={() => handleDelete(career._id)}
+                      className="delete-btn"
+                    >
                       Delete
                     </button>
                   </td>

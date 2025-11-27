@@ -19,7 +19,6 @@ function AdminDashboard() {
   const location = useLocation();
   const { darkMode } = useAdminDarkMode();
 
-  // Session timeout configuration
   const { isActive, resetTimer } = useSessionTimeout(
     5 * 60 * 1000,
     8 * 60 * 60 * 1000
@@ -39,7 +38,6 @@ function AdminDashboard() {
     }
   }, [location, navigate]);
 
-  // Handle session timeout
   useEffect(() => {
     if (!isActive && !showTimeoutModal && role) {
       setShowTimeoutModal(true);
@@ -60,9 +58,7 @@ function AdminDashboard() {
     }
   }, [isActive, showTimeoutModal, role]);
 
-  // Modified: Continue session now redirects to login for re-authentication
   const handleContinueSession = () => {
-    // Save current state for restoration after re-login
     const currentState = {
       pathname: location.pathname,
       search: location.search,
@@ -70,16 +66,13 @@ function AdminDashboard() {
       timestamp: Date.now(),
     };
 
-    // Store the state in sessionStorage for restoration
     sessionStorage.setItem("preTimeoutState", JSON.stringify(currentState));
     sessionStorage.setItem("reauthenticationRequired", "true");
     sessionStorage.setItem("originalRole", role);
 
-    // Clear the modal and redirect to login
     setShowTimeoutModal(false);
     setCountdown(60);
 
-    // Redirect to admin login with return URL
     const returnUrl = encodeURIComponent(
       location.pathname + location.search + location.hash
     );
@@ -91,7 +84,6 @@ function AdminDashboard() {
     sessionStorage.clear();
     setShowTimeoutModal(false);
 
-    // Show logout message
     sessionStorage.setItem(
       "logoutMessage",
       "Session expired due to inactivity. Please login again."
@@ -105,7 +97,6 @@ function AdminDashboard() {
     window.location.href = "/admin-login";
   };
 
-  // Check for successful re-authentication on component mount
   useEffect(() => {
     const checkReauthentication = () => {
       const reauthStatus = sessionStorage.getItem("reauthenticationSuccess");
@@ -115,16 +106,13 @@ function AdminDashboard() {
         try {
           const state = JSON.parse(preTimeoutState);
 
-          // Clear re-authentication flags
           sessionStorage.removeItem("reauthenticationSuccess");
           sessionStorage.removeItem("preTimeoutState");
           sessionStorage.removeItem("reauthenticationRequired");
           sessionStorage.removeItem("originalRole");
 
-          // Reset the session timer
           resetTimer();
 
-          // Navigate back to the original page
           navigate(state.pathname + (state.search || "") + (state.hash || ""));
 
           toast.success("Session restored successfully!", {
@@ -140,7 +128,6 @@ function AdminDashboard() {
     checkReauthentication();
   }, [resetTimer, navigate]);
 
-  // Apply dark mode class to admin-dashboard container
   useEffect(() => {
     const adminDashboard = document.querySelector(".admin-dashboard");
     if (adminDashboard) {
@@ -152,23 +139,21 @@ function AdminDashboard() {
     }
   }, [darkMode]);
 
-  // Helper to toggle dropdown visibility
   const toggleDropdown = (section) => {
     setActiveDropdown(activeDropdown === section ? null : section);
   };
 
-  // Safe role check - handle null role
   const availableRoutes = role ? getAvailableRoutes(role) : [];
 
-  // Optimized canAccess function without spammy logging
-  const canAccess = React.useCallback((route) => {
-    return availableRoutes.includes(route);
-  }, [availableRoutes]);
+  const canAccess = React.useCallback(
+    (route) => {
+      return availableRoutes.includes(route);
+    },
+    [availableRoutes]
+  );
 
-  // Helper to determine arrow direction
   const getArrow = (section) => (activeDropdown === section ? "▲" : "▼");
 
-  // Show loading state while role is being determined
   if (isLoading) {
     return (
       <div className="admin-dashboard-loading">
@@ -177,7 +162,6 @@ function AdminDashboard() {
     );
   }
 
-  // Safe role display - handle null case
   const displayRole = role || "admin";
   const roleDisplayName =
     displayRole.charAt(0).toUpperCase() + displayRole.slice(1);
@@ -191,10 +175,8 @@ function AdminDashboard() {
         countdown={countdown}
       />
 
-      {/* Navbar */}
       <AdminNavbar />
 
-      {/* Sidebar */}
       <div className="admin-sidebar">
         <div className="sidebar-header">
           <img src={adminImage} alt="Admin" className="admin-image" />
@@ -209,7 +191,6 @@ function AdminDashboard() {
         </div>
 
         <nav className="sidebar-links">
-          {/* MAIN Section */}
           <div className="section-title">MAIN</div>
           {canAccess("admin-dashboard") && (
             <div
@@ -225,7 +206,6 @@ function AdminDashboard() {
             </div>
           )}
 
-          {/* LISTS Section */}
           <div className="section-title">LISTS</div>
           {canAccess("admin-offline-registration") && (
             <div
@@ -301,7 +281,6 @@ function AdminDashboard() {
             </div>
           )}
 
-          {/* SERVICES Section - Only show for super-admin and admin */}
           {(canAccess("category") ||
             canAccess("sub-category") ||
             canAccess("expert-service-list")) && (
@@ -341,7 +320,6 @@ function AdminDashboard() {
             </>
           )}
 
-          {/* ONLINE REGISTRATION Section - Only show for super-admin, admin, and reception */}
           {(canAccess("home-collection") ||
             canAccess("book-appointment") ||
             canAccess("ambulance-services")) && (
@@ -380,7 +358,6 @@ function AdminDashboard() {
             </>
           )}
 
-          {/* CALL BACK REQUEST Section - Only show for super-admin, admin, and reception */}
           {(canAccess("request-callback") || canAccess("test-booking")) && (
             <>
               <div
@@ -412,7 +389,6 @@ function AdminDashboard() {
             </>
           )}
 
-          {/* MARKETING Section - Only show for super-admin, admin, and account */}
           {(canAccess("admin-advertisement") ||
             canAccess("view-contact-us") ||
             canAccess("admin-career")) && (
@@ -460,7 +436,6 @@ function AdminDashboard() {
             </>
           )}
 
-          {/* ADMIN Section (Super-Admin Only) */}
           {role === "super-admin" && (
             <>
               <div className="section-title">ADMIN</div>
@@ -489,7 +464,6 @@ function AdminDashboard() {
             </>
           )}
 
-          {/* USER Section */}
           <div className="section-title">USER</div>
           <div
             className="sidebar-link sidebar-link-signout"
@@ -503,7 +477,6 @@ function AdminDashboard() {
         </nav>
       </div>
 
-      {/* Main Content Area */}
       <div className="admin-content">
         <Outlet />
       </div>

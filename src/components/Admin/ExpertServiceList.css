@@ -7,7 +7,6 @@
   background-color: rgb(245, 245, 245);
   display: flex;
   gap: 30px;
-  /* align-items: flex-start; */
 }
 
 .expertservice-box1 {
@@ -19,9 +18,8 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   height: fit-content;
   margin: 0;
-  overflow: hidden; /* Prevent overflow */
+  overflow: hidden;
 }
-
 
 .expertservice-box2 {
   width: 55%;
@@ -59,7 +57,6 @@
   text-align: left;
   margin-bottom: 6px;
   display: block;
-  /* border: 1px solid red; */
 }
 
 .expertservice-input-section {
@@ -79,11 +76,6 @@
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-
-
-
-
-/* Test Parameters Container */
 .expertservice-test-parameters-container {
   width: 100%;
   margin: 15px 0;
@@ -94,17 +86,16 @@
 .expertservice-test-parameters-label {
   font-weight: 500;
   font-size: 0.85rem;
-  /* color: #333; */
+
   text-align: left;
   margin-bottom: 8px;
   display: block;
 }
 
-/* Test Parameters Grid */
 .expertservice-test-parameters {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* gap: 8px; */
+
   padding: 5px;
   background: #f8f9fa;
   border: 1px solid #e0e0e0;
@@ -115,11 +106,10 @@
   box-sizing: border-box;
 }
 
-/* PERFECT SOLUTION: Parent div with flexbox */
 .expertservice-checkbox-item {
   display: flex;
   align-items: center;
-  /* gap: 8px; */
+
   padding: 2px 4px;
   background-color: #ffffff;
   border: 1px solid #e8e8e8;
@@ -157,11 +147,10 @@
   text-overflow: ellipsis;
 }
 
-/* Add Test Parameter Section */
 .expertservice-add-test-parameter {
   grid-column: span 3;
   display: flex;
-  /* gap: 10px; */
+
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px dashed #ccc;
@@ -205,22 +194,17 @@
   background-color: #218838;
 }
 
-
-
-
-
 .expertservice-checkbox-group label {
-    background-color: transparent !important; 
-    user-select: none; 
-  }
-  
-  .expertservice-checkbox-group input {
-    background-color: transparent !important;
-    outline: none; 
-    border: none;
-  }
+  background-color: transparent !important;
+  user-select: none;
+}
 
-/* Submit Button */
+.expertservice-checkbox-group input {
+  background-color: transparent !important;
+  outline: none;
+  border: none;
+}
+
 .expertservice-submit-container {
   display: flex;
   justify-content: flex-end;
@@ -243,7 +227,6 @@ button.expertservice-submit-button:hover {
   background-color: #218838;
 }
 
-/* Box 2 - Table Section */
 .expertservice-fetch-container {
   padding: 20px;
   background-color: #ffffff;
@@ -263,7 +246,6 @@ button.expertservice-submit-button:hover {
   margin-bottom: 20px;
 }
 
-/* Filter and Search Container */
 .expertservice-filter-container {
   margin-bottom: 15px;
 }
@@ -311,7 +293,6 @@ button.expertservice-submit-button:hover {
   background-color: #eb7801;
 }
 
-/* Table Styles */
 .expertservice-fetch-table {
   width: 100%;
   border-collapse: collapse;
@@ -383,12 +364,11 @@ button.expertservice-submit-button:hover {
   background-color: #c82333;
 }
 
-/* Responsive adjustments */
 @media (max-width: 1024px) {
   .expertservice-main1 {
     flex-direction: column;
   }
-  
+
   .expertservice-box1,
   .expertservice-box2 {
     width: 100%;
@@ -401,20 +381,20 @@ button.expertservice-submit-button:hover {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .expertservice-test-parameters {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .expertservice-add-test-parameter {
     grid-column: span 2;
   }
-  
+
   .expertservice-search-container {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .expertservice-search-input {
     width: 100%;
   }
@@ -424,7 +404,7 @@ button.expertservice-submit-button:hover {
   .expertservice-test-parameters {
     grid-template-columns: 1fr;
   }
-  
+
   .expertservice-add-test-parameter {
     grid-column: span 1;
   }

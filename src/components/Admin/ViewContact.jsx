@@ -1,4 +1,3 @@
-// Admin/ViewContact.js
 import React, { useState, useEffect } from "react";
 import "./ViewContact.css";
 import { BACKEND_URL } from "../utils/Url";
@@ -14,7 +13,7 @@ const ViewContact = () => {
       try {
         const response = await fetch(`${BACKEND_URL}/api/contact`);
         const data = await response.json();
-        
+
         if (!response.ok) {
           throw new Error(data.message || "Failed to fetch contacts");
         }
@@ -37,9 +36,9 @@ const ViewContact = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           status: newStatus,
-          responded: newStatus === "resolved" 
+          responded: newStatus === "resolved",
         }),
       });
 
@@ -49,10 +48,9 @@ const ViewContact = () => {
         throw new Error(data.message || "Failed to update status");
       }
 
-      // Update the local state
-      setContacts(contacts.map(contact => 
-        contact._id === id ? data.data : contact
-      ));
+      setContacts(
+        contacts.map((contact) => (contact._id === id ? data.data : contact))
+      );
     } catch (err) {
       console.error("Error updating status:", err);
       alert(err.message || "Failed to update status");
@@ -60,8 +58,9 @@ const ViewContact = () => {
   };
 
   const deleteContact = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this contact?")) return;
-    
+    if (!window.confirm("Are you sure you want to delete this contact?"))
+      return;
+
     try {
       const response = await fetch(`${BACKEND_URL}/api/contact/${id}`, {
         method: "DELETE",
@@ -73,17 +72,17 @@ const ViewContact = () => {
         throw new Error(data.message || "Failed to delete contact");
       }
 
-      // Update the local state
-      setContacts(contacts.filter(contact => contact._id !== id));
+      setContacts(contacts.filter((contact) => contact._id !== id));
     } catch (err) {
       console.error("Error deleting contact:", err);
       alert(err.message || "Failed to delete contact");
     }
   };
 
-  const filteredContacts = statusFilter === "all" 
-    ? contacts 
-    : contacts.filter(contact => contact.status === statusFilter);
+  const filteredContacts =
+    statusFilter === "all"
+      ? contacts
+      : contacts.filter((contact) => contact.status === statusFilter);
 
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">Error: {error}</div>;
@@ -91,12 +90,12 @@ const ViewContact = () => {
   return (
     <div className="view-contact-container">
       <h1>Contact Submissions</h1>
-      
+
       <div className="filters">
         <label>
           Filter by Status:
-          <select 
-            value={statusFilter} 
+          <select
+            value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
           >
             <option value="all">All</option>
@@ -134,7 +133,9 @@ const ViewContact = () => {
                   <td>
                     <select
                       value={contact.status}
-                      onChange={(e) => updateStatus(contact._id, e.target.value)}
+                      onChange={(e) =>
+                        updateStatus(contact._id, e.target.value)
+                      }
                     >
                       <option value="new">New</option>
                       <option value="in-progress">In Progress</option>
@@ -142,7 +143,7 @@ const ViewContact = () => {
                     </select>
                   </td>
                   <td>
-                    <button 
+                    <button
                       onClick={() => deleteContact(contact._id)}
                       className="delete-btn"
                     >

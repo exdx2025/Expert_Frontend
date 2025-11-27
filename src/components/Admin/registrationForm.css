@@ -1,12 +1,10 @@
-/* RegistrationForm.css */
 .adminreg-container {
   padding: 20px;
   max-width: 1200px;
   margin: 20px auto;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
-/* Header Styles */
 .adminreg-header {
   text-align: center;
   margin-bottom: 40px;
@@ -24,7 +22,6 @@
   color: #666;
 }
 
-/* Services Grid */
 .adminreg-services-grid {
   display: flex;
   flex-wrap: wrap;
@@ -47,7 +44,7 @@
   min-height: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Changed to space-between for better alignment */
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -83,25 +80,23 @@
   color: #603c86;
   margin-bottom: 4px;
   text-align: center;
-  flex-grow: 1; /* Allow title to take available space */
+  flex-grow: 1;
   display: flex;
   align-items: center;
 }
 
-/* Fixed Arrow Alignment */
 .adminreg-service-arrow {
   color: #eb7801;
   font-weight: bold;
   font-size: 1.2rem;
-  margin-top: auto; /* Push arrow to bottom */
-  align-self: flex-end; /* Align to right side */
+  margin-top: auto;
+  align-self: flex-end;
 }
 
 .adminreg-service-card:hover .adminreg-service-arrow {
   transform: translateX(5px);
 }
 
-/* Simplified Form Section - No Box */
 .adminreg-form-section-simple {
   background: transparent;
   padding: 0;
@@ -126,14 +121,12 @@
   border-radius: 2px;
 }
 
-/* Simplified Form */
 .adminreg-form-simple {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-/* Form Grid Layout */
 .adminreg-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -155,7 +148,6 @@
   border-bottom: 2px solid #f0f0f0;
 }
 
-/* Form Elements */
 .adminreg-form-row {
   display: flex;
   gap: 15px;
@@ -198,7 +190,6 @@
   color: #999;
 }
 
-/* Form Actions */
 .adminreg-form-actions {
   display: flex;
   justify-content: flex-end;
@@ -244,7 +235,6 @@
   color: white;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .adminreg-container {
     padding: 15px;

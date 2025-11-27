@@ -1,6 +1,5 @@
-// components/Admin/Widget.jsx - Alternative Version
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { BACKEND_URL } from "../utils/Url";
 import "./Widget.css";
 
@@ -10,56 +9,57 @@ const Widget = ({ type }) => {
 
   let data;
 
-  // Fetch all registrations and filter by type
   useEffect(() => {
     const fetchCount = async () => {
       try {
-        // Fetch all registrations from the main endpoint
-        const response = await axios.get(`${BACKEND_URL}/api/admin-registrations`);
-        console.log('All registrations:', response.data); // Debug log
-        
+        const response = await axios.get(
+          `${BACKEND_URL}/api/admin-registrations`
+        );
+        console.log("All registrations:", response.data);
+
         let filteredCount = 0;
-        
+
         switch (type) {
           case "transaction":
-            // For transactions, fetch from carts endpoint
-            const cartsResponse = await axios.get(`${BACKEND_URL}/api/admin-carts`);
-            const totalTests = cartsResponse.data.reduce((total, cart) => 
-              total + (cart.tests?.length || 0), 0
+            const cartsResponse = await axios.get(
+              `${BACKEND_URL}/api/admin-carts`
+            );
+            const totalTests = cartsResponse.data.reduce(
+              (total, cart) => total + (cart.tests?.length || 0),
+              0
             );
             filteredCount = totalTests;
             break;
-            
+
           case "general":
-            // Count general registrations
-            filteredCount = response.data.filter(reg => 
-              reg.serviceName === 'General Registration' || 
-              reg.formType === 'admin-general-registration'
+            filteredCount = response.data.filter(
+              (reg) =>
+                reg.serviceName === "General Registration" ||
+                reg.formType === "admin-general-registration"
             ).length;
             break;
-            
+
           case "home":
-            // Count home collections
-            filteredCount = response.data.filter(reg => 
-              reg.serviceName === 'Home Collection' || 
-              reg.formType === 'admin-home-collection'
+            filteredCount = response.data.filter(
+              (reg) =>
+                reg.serviceName === "Home Collection" ||
+                reg.formType === "admin-home-collection"
             ).length;
             break;
-            
+
           case "appointment":
-            // Count appointments
-            filteredCount = response.data.filter(reg => 
-              reg.serviceName === 'Book Appointment' || 
-              reg.formType === 'admin-book-appointment'
+            filteredCount = response.data.filter(
+              (reg) =>
+                reg.serviceName === "Book Appointment" ||
+                reg.formType === "admin-book-appointment"
             ).length;
             break;
-            
+
           default:
             filteredCount = response.data.length;
         }
-        
+
         setCount(filteredCount);
-        
       } catch (error) {
         console.error(`Error fetching ${type} count:`, error);
         setCount(0);
@@ -71,7 +71,6 @@ const Widget = ({ type }) => {
     fetchCount();
   }, [type]);
 
-  // ... rest of the component remains the same as above
   switch (type) {
     case "transaction":
       data = {
@@ -79,10 +78,13 @@ const Widget = ({ type }) => {
         isMoney: false,
         link: "See all transactions",
         icon: (
-          <i className="fas fa-receipt icon" style={{
-            color: "crimson",
-            backgroundColor: "rgba(255, 0, 0, 0.2)",
-          }}></i>
+          <i
+            className="fas fa-receipt icon"
+            style={{
+              color: "crimson",
+              backgroundColor: "rgba(255, 0, 0, 0.2)",
+            }}
+          ></i>
         ),
       };
       break;
@@ -92,10 +94,13 @@ const Widget = ({ type }) => {
         isMoney: false,
         link: "View all registrations",
         icon: (
-          <i className="fas fa-user-plus icon" style={{
-            backgroundColor: "rgba(218, 165, 32, 0.2)",
-            color: "goldenrod",
-          }}></i>
+          <i
+            className="fas fa-user-plus icon"
+            style={{
+              backgroundColor: "rgba(218, 165, 32, 0.2)",
+              color: "goldenrod",
+            }}
+          ></i>
         ),
       };
       break;
@@ -105,10 +110,13 @@ const Widget = ({ type }) => {
         isMoney: false,
         link: "View home collections",
         icon: (
-          <i className="fas fa-home icon" style={{ 
-            backgroundColor: "rgba(0, 128, 0, 0.2)", 
-            color: "green" 
-          }}></i>
+          <i
+            className="fas fa-home icon"
+            style={{
+              backgroundColor: "rgba(0, 128, 0, 0.2)",
+              color: "green",
+            }}
+          ></i>
         ),
       };
       break;
@@ -118,10 +126,13 @@ const Widget = ({ type }) => {
         isMoney: false,
         link: "See all appointments",
         icon: (
-          <i className="fas fa-calendar-check icon" style={{
-            backgroundColor: "rgba(128, 0, 128, 0.2)",
-            color: "purple",
-          }}></i>
+          <i
+            className="fas fa-calendar-check icon"
+            style={{
+              backgroundColor: "rgba(128, 0, 128, 0.2)",
+              color: "purple",
+            }}
+          ></i>
         ),
       };
       break;

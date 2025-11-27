@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
-import { Link } from "react-router-dom"; // For navigation
+import { Link } from "react-router-dom";
 import "./viewAppointment.css";
 import { BACKEND_URL } from "../utils/Url";
 
@@ -14,14 +14,12 @@ const ViewAppointments = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await fetch(
-          `${BACKEND_URL}/api/book-appointment`
-        );
+        const response = await fetch(`${BACKEND_URL}/api/book-appointment`);
 
         if (response.ok) {
           const data = await response.json();
           setAppointments(data);
-          setFilteredAppointments(data); // Initialize filtered appointments
+          setFilteredAppointments(data);
         } else {
           setError("Failed to fetch appointments.");
         }
@@ -36,17 +34,14 @@ const ViewAppointments = () => {
     fetchAppointments();
   }, []);
 
-  // Handle search functionality
   const handleSearch = (event) => {
     const value = event.target.value.toLowerCase().trim();
     setSearchTerm(value);
 
     if (value === "") {
-      // Reset filtered appointments when search term is empty
       setFilteredAppointments(appointments);
     } else {
       const filtered = appointments.filter((appointment) => {
-        // Check if any of the fields match the search term
         return (
           (appointment.name &&
             appointment.name.toLowerCase().includes(value)) ||
@@ -60,7 +55,6 @@ const ViewAppointments = () => {
     }
   };
 
-  // Handle export to Excel functionality
   const handleExportToExcel = () => {
     const transformedData = filteredAppointments.map((appointment, index) => ({
       "S.No": index + 1,
@@ -92,7 +86,6 @@ const ViewAppointments = () => {
     <div className="viewAppointments-container">
       <h2>Book Appointments List</h2>
 
-      {/* Search, Filter, and Export to Excel */}
       <div className="filter-actions">
         <input
           type="text"
@@ -106,14 +99,6 @@ const ViewAppointments = () => {
         </button>
       </div>
 
-      {/* Back to Dashboard Button */}
-      {/* <div className="appointment-button-container">
-        <Link to="/admin/dashboard" className="back-button-appointment">
-          &larr; Back to Dashboard
-        </Link>
-      </div> */}
-
-      {/* Display Appointments in table */}
       {appointments.length === 0 ? (
         <p>No appointments found.</p>
       ) : (

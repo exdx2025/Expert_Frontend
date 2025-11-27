@@ -1,15 +1,13 @@
-/* Fetch Registrations Container */
 .fetch-container {
   padding: 15px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 100%; /* Allow full width */
+  max-width: 100%;
   margin: 20px auto;
-  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  overflow-x: auto;
 }
 
-/* Title */
 .fetch-title {
   text-align: center;
   margin-top: 10px;
@@ -20,7 +18,6 @@
   margin-bottom: 10px;
 }
 
-/* Button and Filter Container */
 .button-container {
   display: flex;
   justify-content: space-between;
@@ -38,7 +35,6 @@
   width: 150px;
 }
 
-/* Search Container */
 .search-container {
   display: flex;
   justify-content: flex-end;
@@ -72,14 +68,13 @@
   transform: scale(1.05);
 }
 
-/* Table Styles */
 .fetch-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  font-size: 14px; /* Reduce font size */
+  font-size: 14px;
 }
 
 .fetch-table th,
@@ -105,10 +100,9 @@
 
 .fetch-table td {
   color: #333;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .fetch-container {
     padding: 10px;
@@ -121,7 +115,7 @@
 
   .date-filter,
   .search-input {
-    width: 100%; /* Full width for mobile */
+    width: 100%;
     margin-bottom: 10px;
   }
 
@@ -135,7 +129,7 @@
   }
 
   .fetch-table {
-    font-size: 12px; /* Smaller font size for mobile */
+    font-size: 12px;
   }
 
   .fetch-table th,
@@ -148,6 +142,6 @@
   .fetch-table th,
   .fetch-table td {
     padding: 4px;
-    font-size: 10px; /* Smaller font for very small screens */
+    font-size: 10px;
   }
 }

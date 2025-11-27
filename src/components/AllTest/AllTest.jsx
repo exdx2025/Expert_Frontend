@@ -26,7 +26,6 @@ const AllTest = () => {
   const isShowingSubCategory = subCategoryData.length > 0;
   const { addToCart } = useCart();
 
-  // Check if user is logged in (you'll need to implement your actual auth check)
   const isLoggedIn = () => {
     return localStorage.getItem("authToken") !== null;
   };
@@ -58,7 +57,7 @@ const AllTest = () => {
   const handleCategoryClick = async (category) => {
     setSelectedCategory(category);
     setExpandedCardId(null);
-    setSelectedSubTestId(null); // ✅
+    setSelectedSubTestId(null);
     setSubCategoryData([]);
     setCurrentPage(1);
     try {
@@ -85,10 +84,6 @@ const AllTest = () => {
       const filtered = json.data.filter(
         (item) => item.subCategory === card.title
       );
-
-      // DEBUG: Log the returned test data
-      // console.log("Subcategory tests:", filtered);
-      // console.log("First test ID:", filtered[0]?._id);
 
       setSubCategoryData(filtered);
     } catch (err) {
@@ -156,7 +151,7 @@ const AllTest = () => {
       .includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
-  // Pagination Logic
+
   const paginatedCards = expandedCardId ? subCategoryData : filteredData;
 
   const totalPages = Math.ceil(paginatedCards.length / itemsPerPage);
@@ -247,7 +242,6 @@ const AllTest = () => {
                       <>
                         <div className="card-price">
                           {card.hasOffer ? (
-                            // Show offer price
                             <>
                               <span
                                 className="original-price"
@@ -281,7 +275,6 @@ const AllTest = () => {
                               </span>
                             </>
                           ) : (
-                            // Show regular price
                             <span className="discounted-price">
                               <MdOutlineCurrencyRupee className="price-icon discount-icon" />
                               {card.oldPrice}/- Price
@@ -313,7 +306,6 @@ const AllTest = () => {
                           if (isShowingSubCategory || expandedCardId) {
                             handleAddToCart(card);
                           } else {
-                            // If not logged in and trying to book test
                             if (!isLoggedIn()) {
                               toast.error("Please login to book tests");
                               navigate("/log-in");

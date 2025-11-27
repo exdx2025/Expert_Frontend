@@ -91,11 +91,7 @@ const ViewAmbulanceService = () => {
         </button>
       </div>
 
-      {/* <div className="ambulance-button-container">
-        <Link to="/admin/dashboard" className="back-button-ambulance">
-          &larr; Back to Dashboard
-        </Link>
-      </div> */}
+  
 
       {filteredRequests.length === 0 ? (
         <p>No ambulance requests found.</p>

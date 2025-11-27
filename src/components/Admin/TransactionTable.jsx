@@ -1,4 +1,3 @@
-// components/Admin/TransactionTable.jsx
 import React, { useEffect, useState } from "react";
 import "./TransactionTable.css";
 import { BACKEND_URL } from "../utils/Url";
@@ -11,10 +10,8 @@ const TransactionTable = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Filters
   const [statusFilter, setStatusFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
 
@@ -37,11 +34,10 @@ const TransactionTable = () => {
     fetchTransactions();
   }, []);
 
-  // Flatten carts -> tests
   const allRows = transactions.flatMap((cart) =>
     cart.tests?.map((test, index) => ({
       id: `${cart._id}-${index}`,
-      phone: cart.userMobile || "N/A", // ✅ phone instead of testId
+      phone: cart.userMobile || "N/A",
       testName: test.testName || "Unknown Test",
       customer: cart.userName || "Unknown User",
       date: new Date(cart.createdAt),
@@ -51,7 +47,6 @@ const TransactionTable = () => {
     }))
   );
 
-  // Apply filters
   const filteredRows = allRows.filter((row) => {
     const matchesStatus = statusFilter ? row.status === statusFilter : true;
     const matchesDate = dateFilter
@@ -60,7 +55,6 @@ const TransactionTable = () => {
     return matchesStatus && matchesDate;
   });
 
-  // Pagination calculations
   const totalPages = Math.ceil(filteredRows.length / ITEMS_PER_PAGE);
   const paginatedRows = filteredRows.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
@@ -75,7 +69,6 @@ const TransactionTable = () => {
     <div className="table-container">
       <h2 className="table-title">Patient Registration</h2>
 
-      {/* Filters */}
       <div className="filters">
         <div>
           <label>Status: </label>
@@ -107,7 +100,6 @@ const TransactionTable = () => {
         </div>
       </div>
 
-      {/* Table */}
       <table className="transaction-table">
         <thead>
           <tr>
@@ -116,7 +108,7 @@ const TransactionTable = () => {
             <th className="table-header">Customer</th>
             <th className="table-header">Date</th>
             <th className="table-header">Amount</th>
-            {/* <th className="table-header">Payment Method</th> */}
+
             <th className="table-header">Status</th>
           </tr>
         </thead>
@@ -135,7 +127,7 @@ const TransactionTable = () => {
                 <td className="table-cell">{row.testName}</td>
                 <td className="table-cell">{row.date.toLocaleDateString()}</td>
                 <td className="table-cell">₹{row.amount.toLocaleString()}</td>
-                {/* <td className="table-cell">{row.paymentMethod}</td> */}
+
                 <td className="table-cell">
                   <span className={`status ${row.status.toLowerCase()}`}>
                     {row.status}
@@ -147,7 +139,6 @@ const TransactionTable = () => {
         </tbody>
       </table>
 
-      {/* Pagination Controls */}
       <div className="pagination">
         <button
           disabled={currentPage === 1}

@@ -5,15 +5,14 @@ import { BACKEND_URL } from "../utils/Url";
 const AdminAdvertisement = () => {
   const [tests, setTests] = useState([]);
   const [testsWithOffers, setTestsWithOffers] = useState([]);
-  
-  // Test Offer Form Data
+
   const [testOfferFormData, setTestOfferFormData] = useState({
     testId: "",
     offerDiscountPercent: "",
     offerValidUntil: "",
-    offerDescription: ""
+    offerDescription: "",
   });
-  
+
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -23,7 +22,6 @@ const AdminAdvertisement = () => {
     fetchTestsWithOffers();
   }, []);
 
-  // Fetch all tests for applying offers
   const fetchAllTests = async () => {
     try {
       setLoading(true);
@@ -32,9 +30,12 @@ const AdminAdvertisement = () => {
       const data = await response.json();
       if (response.ok) {
         console.log("Fetched tests from API:", data.data);
-        // Log all test titles to see what we have
+
         if (data.data && data.data.length > 0) {
-          console.log("All test titles:", data.data.map(test => test.title));
+          console.log(
+            "All test titles:",
+            data.data.map((test) => test.title)
+          );
         }
         setTests(data.data);
       } else {
@@ -47,10 +48,11 @@ const AdminAdvertisement = () => {
     }
   };
 
-  // Fetch tests that currently have active offers
   const fetchTestsWithOffers = async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/subcategories/offers/active`);
+      const response = await fetch(
+        `${BACKEND_URL}/api/subcategories/offers/active`
+      );
       const data = await response.json();
       if (response.ok) {
         setTestsWithOffers(data.data);
@@ -60,29 +62,30 @@ const AdminAdvertisement = () => {
     }
   };
 
-  // Test Offer Handlers
   const handleTestOfferChange = (e) => {
     const { name, value } = e.target;
-    setTestOfferFormData(prev => ({
+    setTestOfferFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleTestSelect = (testId) => {
-    const selectedTest = tests.find(test => test._id === testId);
+    const selectedTest = tests.find((test) => test._id === testId);
     if (selectedTest) {
-      setTestOfferFormData(prev => ({
+      setTestOfferFormData((prev) => ({
         ...prev,
         testId: testId,
-        offerDescription: `Special offer on ${selectedTest.title} - Get ${prev.offerDiscountPercent || ''}% OFF!`
+        offerDescription: `Special offer on ${selectedTest.title} - Get ${
+          prev.offerDiscountPercent || ""
+        }% OFF!`,
       }));
     }
   };
 
   const applyTestOffer = async (e) => {
     e.preventDefault();
-    
+
     if (!testOfferFormData.testId || !testOfferFormData.offerDiscountPercent) {
       alert("Please select a test and enter discount percentage");
       return;
@@ -97,10 +100,12 @@ const AdminAdvertisement = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            offerDiscountPercent: parseInt(testOfferFormData.offerDiscountPercent),
+            offerDiscountPercent: parseInt(
+              testOfferFormData.offerDiscountPercent
+            ),
             offerValidUntil: testOfferFormData.offerValidUntil,
-            offerDescription: testOfferFormData.offerDescription
-          })
+            offerDescription: testOfferFormData.offerDescription,
+          }),
         }
       );
 
@@ -120,12 +125,16 @@ const AdminAdvertisement = () => {
   };
 
   const removeTestOffer = async (testId) => {
-    if (window.confirm("Are you sure you want to remove this offer from the test?")) {
+    if (
+      window.confirm(
+        "Are you sure you want to remove this offer from the test?"
+      )
+    ) {
       try {
         const response = await fetch(
           `${BACKEND_URL}/api/subcategories/${testId}/remove-offer`,
           {
-            method: "POST"
+            method: "POST",
           }
         );
 
@@ -146,55 +155,62 @@ const AdminAdvertisement = () => {
       testId: "",
       offerDiscountPercent: "",
       offerValidUntil: "",
-      offerDescription: ""
+      offerDescription: "",
     });
   };
 
-  // Enhanced search function with better debugging
-  const filteredTests = tests.filter(test => {
+  const filteredTests = tests.filter((test) => {
     if (!test || !test.title) {
       console.log("Test missing title:", test);
       return false;
     }
-    
+
     const searchLower = searchQuery.toLowerCase().trim();
     const titleLower = test.title.toLowerCase();
-    
-    // Check if title contains search query
+
     const matchesSearch = titleLower.includes(searchLower);
-    
-    // Only log when actually searching (not empty search)
+
     if (searchQuery && (matchesSearch || searchLower.length > 2)) {
-      console.log(`Search: "${searchLower}", Test: "${titleLower}", Match: ${matchesSearch}`);
+      console.log(
+        `Search: "${searchLower}", Test: "${titleLower}", Match: ${matchesSearch}`
+      );
     }
-    
+
     return matchesSearch;
   });
 
-  // Log when search results change
   useEffect(() => {
     if (searchQuery) {
-      console.log(`Search results for "${searchQuery}":`, filteredTests.length, "tests found");
-      console.log("Found tests:", filteredTests.map(t => t.title));
+      console.log(
+        `Search results for "${searchQuery}":`,
+        filteredTests.length,
+        "tests found"
+      );
+      console.log(
+        "Found tests:",
+        filteredTests.map((t) => t.title)
+      );
     }
   }, [filteredTests, searchQuery]);
 
-  // Log when tests load
   useEffect(() => {
     if (tests.length > 0) {
       console.log("Total tests loaded:", tests.length);
-      console.log("Sample tests:", tests.slice(0, 5).map(t => t.title));
+      console.log(
+        "Sample tests:",
+        tests.slice(0, 5).map((t) => t.title)
+      );
     }
   }, [tests]);
 
   return (
     <div className="admin-advertisement-container">
       <h1>Test Offer Management</h1>
-      
+
       <div className="admin-advertisement-test-offer-management">
         <div className="admin-advertisement-test-offer-form">
           <h2>Apply Offer to Test</h2>
-          
+
           <div className="admin-advertisement-form-group">
             <label>Search Test:</label>
             <input
@@ -206,7 +222,7 @@ const AdminAdvertisement = () => {
                 setSearchQuery(e.target.value);
               }}
             />
-            <small style={{color: '#666', fontSize: '12px'}}>
+            <small style={{ color: "#666", fontSize: "12px" }}>
               Currently showing {filteredTests.length} of {tests.length} tests
             </small>
           </div>
@@ -225,7 +241,7 @@ const AdminAdvertisement = () => {
                   No tests found for "{searchQuery}"
                 </option>
               ) : null}
-              {filteredTests.map(test => (
+              {filteredTests.map((test) => (
                 <option key={test._id} value={test._id}>
                   {test.title} - ₹{test.oldPrice}
                 </option>
@@ -270,10 +286,18 @@ const AdminAdvertisement = () => {
           </div>
 
           <div className="admin-advertisement-form-actions">
-            <button type="button" onClick={applyTestOffer} className="admin-advertisement-submit-btn">
+            <button
+              type="button"
+              onClick={applyTestOffer}
+              className="admin-advertisement-submit-btn"
+            >
               Apply Offer to Test
             </button>
-            <button type="button" onClick={resetTestOfferForm} className="admin-advertisement-cancel-btn">
+            <button
+              type="button"
+              onClick={resetTestOfferForm}
+              className="admin-advertisement-cancel-btn"
+            >
               Reset
             </button>
           </div>
@@ -298,16 +322,22 @@ const AdminAdvertisement = () => {
                 </tr>
               </thead>
               <tbody>
-                {testsWithOffers.map(test => (
+                {testsWithOffers.map((test) => (
                   <tr key={test._id}>
                     <td>{test.title}</td>
                     <td>₹{test.oldPrice}</td>
-                    <td className="discounted-price">₹{test.offerDiscountedPrice}</td>
-                    <td className="discount-badge">{test.offerDiscountPercent}% OFF</td>
-                    <td>{new Date(test.offerValidUntil).toLocaleDateString()}</td>
+                    <td className="discounted-price">
+                      ₹{test.offerDiscountedPrice}
+                    </td>
+                    <td className="discount-badge">
+                      {test.offerDiscountPercent}% OFF
+                    </td>
                     <td>
-                      <button 
-                        onClick={() => removeTestOffer(test._id)} 
+                      {new Date(test.offerValidUntil).toLocaleDateString()}
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => removeTestOffer(test._id)}
                         className="admin-advertisement-delete-btn"
                       >
                         Remove Offer

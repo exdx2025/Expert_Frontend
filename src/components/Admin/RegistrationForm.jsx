@@ -10,21 +10,20 @@ const RegistrationForm = () => {
     {
       id: "admin-general-registration",
       title: "General Registration",
-      description: "Register for general laboratory services and tests"
+      description: "Register for general laboratory services and tests",
     },
     {
       id: "admin-home-collection",
       title: "Home Collection",
-      description: "Schedule sample collection from your home location"
+      description: "Schedule sample collection from your home location",
     },
     {
       id: "admin-book-appointment",
       title: "Book Appointment",
-      description: "Book an appointment for consultation or specific tests"
-    }
+      description: "Book an appointment for consultation or specific tests",
+    },
   ];
 
-  // Always have a service selected, default to first one
   const [formType, setFormType] = useState(services[0].id);
   const [formData, setFormData] = useState({
     name: "",
@@ -57,7 +56,6 @@ const RegistrationForm = () => {
       toast.success("Form submitted successfully!");
       console.log(response.data);
 
-      // Reset form
       setFormData({
         name: "",
         mobile: "",
@@ -90,7 +88,6 @@ const RegistrationForm = () => {
         <p className="adminreg-subtitle">Choose a service to get started</p>
       </div>
 
-      {/* Service Selection Cards */}
       <div className="adminreg-services-grid">
         {services.map((service) => (
           <div
@@ -104,23 +101,20 @@ const RegistrationForm = () => {
               {service.title.charAt(0)}
             </div>
             <h3 className="adminreg-service-title">{service.title}</h3>
-            {/* <div className="adminreg-service-arrow">→</div> */}
           </div>
         ))}
       </div>
 
-      {/* Registration Form - Always visible since we always have a formType */}
       <div className="adminreg-form-section-simple">
         <div className="adminreg-form-header-simple">
           <h2 className="adminreg-form-title-simple">
-            {services.find(s => s.id === formType)?.title} Form
+            {services.find((s) => s.id === formType)?.title} Form
           </h2>
           <div className="adminreg-form-underline"></div>
         </div>
 
         <form onSubmit={handleFormSubmit} className="adminreg-form-simple">
           <div className="adminreg-form-grid">
-            {/* Personal Information Section */}
             <div className="adminreg-form-section-group">
               <h3 className="adminreg-section-title">Personal Information</h3>
               <div className="adminreg-form-row">
@@ -194,10 +188,9 @@ const RegistrationForm = () => {
               </div>
             </div>
 
-            {/* Additional Information Section */}
             <div className="adminreg-form-section-group">
               <h3 className="adminreg-section-title">Additional Information</h3>
-              
+
               <div className="adminreg-form-group">
                 <label className="adminreg-label">Book For *</label>
                 <input
@@ -236,7 +229,6 @@ const RegistrationForm = () => {
                 </div>
               </div>
 
-              {/* Address Information */}
               <div className="adminreg-form-group">
                 <label className="adminreg-label">Address</label>
                 <input
@@ -275,7 +267,6 @@ const RegistrationForm = () => {
                 </div>
               </div>
 
-              {/* Date & Time */}
               <div className="adminreg-form-row">
                 <div className="adminreg-form-group">
                   <label className="adminreg-label">Date *</label>

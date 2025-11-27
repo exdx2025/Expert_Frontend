@@ -1,4 +1,4 @@
-/* components/Admin/table.css */
+
 .table-container {
   background-color: white;
   padding: 20px;
@@ -42,7 +42,7 @@
   color: #495057;
 }
 
-/* Base status style */
+
 .status {
   padding: 6px 10px;
   border-radius: 12px;
@@ -51,7 +51,7 @@
   display: inline-block;
 }
 
-/* Existing */
+
 .status.approved {
   color: #0f5132;
   background-color: #d1e7dd;
@@ -64,7 +64,7 @@
   border: 1px solid #ffecb5;
 }
 
-/* ✅ New ones */
+
 .status.processing {
   color: #084298;
   background-color: #cfe2ff;
@@ -84,7 +84,7 @@
 }
 
 
-/* Dark mode styles */
+
 
 .admin-dashboard.dark .status.processing {
   color: #9ec5fe;

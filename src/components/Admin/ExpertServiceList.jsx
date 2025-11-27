@@ -29,7 +29,7 @@ const ExpertServiceList = () => {
     discountPercent: "",
     howManyTest: "",
     reportTime: "",
-    consultation: "", // Added this
+    consultation: "",
     tagLine: "",
     description: "",
     selectedTests: [],
@@ -45,7 +45,6 @@ const ExpertServiceList = () => {
   const [editIndex, setEditIndex] = useState(null);
   const formRef = useRef(null);
 
-  // Fetch data from backend when component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,7 +62,6 @@ const ExpertServiceList = () => {
     fetchData();
   }, []);
 
-  // Handle checkbox change
   const handleCheckboxChange = (test) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -73,7 +71,6 @@ const ExpertServiceList = () => {
     }));
   };
 
-  // Handle new test parameter addition
   const handleAddTestParameter = () => {
     if (newTestParameter && !testParameters.includes(newTestParameter)) {
       setTestParameters([...testParameters, newTestParameter]);
@@ -81,7 +78,6 @@ const ExpertServiceList = () => {
     }
   };
 
-  // Handle input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -90,7 +86,6 @@ const ExpertServiceList = () => {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = async () => {
     try {
       const url =
@@ -128,7 +123,6 @@ const ExpertServiceList = () => {
         setExpertPackageList([...expertPackageList, data.data]);
       }
 
-      // Reset form data
       setFormData({
         expertSerialTestNo: "",
         testNo: "",
@@ -138,7 +132,7 @@ const ExpertServiceList = () => {
         discountPercent: "",
         howManyTest: "",
         reportTime: "",
-        consultation: "", // Added this
+        consultation: "",
         tagLine: "",
         description: "",
         selectedTests: [],
@@ -149,7 +143,6 @@ const ExpertServiceList = () => {
     }
   };
 
-  // Handle edit
   const handleEdit = (index) => {
     const selectedRow = expertPackageList[index];
     setFormData({
@@ -161,7 +154,7 @@ const ExpertServiceList = () => {
       discountPercent: selectedRow.discountPercent,
       howManyTest: selectedRow.howManyTest,
       reportTime: selectedRow.reportTime,
-      consultation: selectedRow.consultation, // Added this
+      consultation: selectedRow.consultation,
       tagLine: selectedRow.tagLine,
       description: selectedRow.description,
       selectedTests: selectedRow.selectedTests,
@@ -170,7 +163,6 @@ const ExpertServiceList = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // Handle delete
   const handleDelete = async (id) => {
     try {
       const response = await fetch(
@@ -192,17 +184,14 @@ const ExpertServiceList = () => {
     }
   };
 
-  // Handle date filter change
   const handleDateFilterChange = (e) => {
     setDateFilter(e.target.value);
   };
 
-  // Handle search query change
   const handleSearchQueryChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  // Export to Excel functionality
   const handleExportToExcel = () => {
     const ws = XLSX.utils.json_to_sheet(expertPackageList);
     const wb = XLSX.utils.book_new();
@@ -215,7 +204,6 @@ const ExpertServiceList = () => {
       <div className="expertservice-box1" ref={formRef}>
         <h1 className="expertservice-titles">Expert Package List Form</h1>
         <div className="expertservice-input-box1">
-          {/* Form fields */}
           <div className="expertservice-input-row">
             <div className="expertservice-input-group">
               <label>Expert Serial Test No:</label>
@@ -359,8 +347,6 @@ const ExpertServiceList = () => {
             </div>
           </div>
 
-          {/* Test Parameters Section */}
-
           <div className="expertservice-test-parameters-container">
             <label className="expertservice-test-parameters-label">
               Test Parameters:
@@ -404,16 +390,6 @@ const ExpertServiceList = () => {
         <div className="expertservice-fetch-container">
           <div className="expertservice-fetch-title">Expert Package List</div>
 
-          {/* <div className="expertservice-filter-container">
-    <input
-      type="date"
-      id="dateFilter"
-      value={dateFilter}
-      onChange={handleDateFilterChange}
-      className="expertservice-date-filter"
-    />
-  </div> */}
-
           <div className="expertservice-search-container">
             <input
               type="text"
@@ -438,7 +414,6 @@ const ExpertServiceList = () => {
           ) : (
             <div className="expertservice-table-container">
               {" "}
-              {/* Added this wrapper */}
               <table className="expertservice-fetch-table">
                 <thead>
                   <tr>

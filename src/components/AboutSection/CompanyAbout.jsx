@@ -1,6 +1,5 @@
 import React from "react";
 import "./companyabout.css";
-// import { RxDotFilled } from "react-icons/rx";
 import abtvideo from "./aboutVideo1.mp4";
 
 const CompanyAbout = () => {
@@ -11,7 +10,6 @@ const CompanyAbout = () => {
           <h1>About Us!</h1>
         </div>
 
-        {/* video */}
         <div className="about-box3">
           <video className="background-video" autoPlay loop muted>
             <source src={abtvideo} type="video/mp4" />

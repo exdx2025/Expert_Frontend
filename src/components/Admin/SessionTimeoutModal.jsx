@@ -1,4 +1,3 @@
-// components/Admin/SessionTimeoutModal.jsx - Updated for re-authentication
 import React, { useEffect } from "react";
 import "./SessionTimeoutModal.css";
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import * as XLSX from "xlsx"; // Import xlsx library
-import { Link } from "react-router-dom"; // Import Link for navigation
+import * as XLSX from "xlsx";
+import { Link } from "react-router-dom";
 import "./bookingList.css";
 import { BACKEND_URL } from "../utils/Url";
 
@@ -9,21 +9,18 @@ function BookingList() {
   const [bookings, setBookings] = useState([]);
   const [filteredBookings, setFilteredBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState(""); // Search term for filtering
-  const [selectedDate, setSelectedDate] = useState(""); // Selected date for filtering
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
 
-  // Function to format the appointment date as dd/mm/yyyy
   const formatDate = (date) => {
     const d = new Date(date);
-    const day = d.getDate().toString().padStart(2, "0"); // Ensure two digits for day
-    const month = (d.getMonth() + 1).toString().padStart(2, "0"); // Get month as number (0-11, hence +1)
+    const day = d.getDate().toString().padStart(2, "0");
+    const month = (d.getMonth() + 1).toString().padStart(2, "0");
     const year = d.getFullYear();
 
-    // Return formatted date as dd/mm/yyyy
     return `${day}/${month}/${year}`;
   };
 
-  // Function to fetch bookings
   const fetchBookings = async () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/api/bookings`);
@@ -36,28 +33,25 @@ function BookingList() {
     }
   };
 
-  // Function to export data to Excel
   const exportToExcel = () => {
     const transformedData = bookings.map((booking, index) => ({
-      "S.No": index + 1, // Serial number starts from 1
+      "S.No": index + 1,
       Name: booking.name,
       "Mobile Number": booking.mobileNumber,
-      "Appointment Date": formatDate(booking.appointmentDate), // Format date here
+      "Appointment Date": formatDate(booking.appointmentDate),
       Pincode: booking.pincode,
     }));
 
-    const worksheet = XLSX.utils.json_to_sheet(transformedData); // Convert transformed data to sheet
-    const workbook = XLSX.utils.book_new(); // Create a new workbook
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Bookings"); // Append the sheet
-    XLSX.writeFile(workbook, "bookings.xlsx"); // Trigger file download
+    const worksheet = XLSX.utils.json_to_sheet(transformedData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Bookings");
+    XLSX.writeFile(workbook, "bookings.xlsx");
   };
 
-  // Function to handle search input
   const handleSearch = (event) => {
     const value = event.target.value;
     setSearchTerm(value);
 
-    // Filter the bookings based on search term
     const filtered = bookings.filter(
       (booking) =>
         booking.name.toLowerCase().includes(value.toLowerCase()) ||
@@ -66,24 +60,20 @@ function BookingList() {
     setFilteredBookings(filtered);
   };
 
-  // Function to handle date filter
   const handleDateFilter = (event) => {
     const value = event.target.value;
     setSelectedDate(value);
 
-    // Filter bookings based on the selected date
     const filtered = bookings.filter(
       (booking) => booking.appointmentDate.split("T")[0] === value
     );
     setFilteredBookings(filtered);
   };
 
-  // Combine search and date filter logic
   useEffect(() => {
     fetchBookings();
   }, []);
 
-  // Filter bookings if there's a search term or selected date
   useEffect(() => {
     if (searchTerm || selectedDate) {
       const filtered = bookings.filter((booking) => {
@@ -102,7 +92,6 @@ function BookingList() {
   }, [searchTerm, selectedDate, bookings]);
 
   return (
-    // <div className="booking-List-main">
     <div className="booking-list-container">
       <h2>Book Now List</h2>
       <div className="actions">
@@ -114,7 +103,6 @@ function BookingList() {
         </a>
       </div>
 
-      {/* Date Filter */}
       <div className="filter-container">
         <input
           type="date"
@@ -132,14 +120,12 @@ function BookingList() {
         />
       </div>
 
-      {/* Display Bookings */}
       {loading ? (
         <p>Loading bookings...</p>
       ) : filteredBookings.length === 0 ? (
         <p>No bookings found.</p>
       ) : (
         <div>
-          {/* <h3>Bookings</h3> */}
           <table className="booking-table">
             <thead>
               <tr>
@@ -155,7 +141,6 @@ function BookingList() {
                   <td>{booking.name}</td>
                   <td>{booking.mobileNumber}</td>
                   <td>{formatDate(booking.appointmentDate)}</td>{" "}
-                  {/* Appointment Date in dd/mm/yyyy format */}
                   <td>{booking.pincode}</td>
                 </tr>
               ))}
@@ -164,7 +149,6 @@ function BookingList() {
         </div>
       )}
     </div>
-    // </div>
   );
 }
 

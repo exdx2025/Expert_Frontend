@@ -1,8 +1,6 @@
 .admin-career-container {
-  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 20px;
-  /* font-family: Arial, sans-serif; */
 }
 
 .career-form {
@@ -44,7 +42,7 @@
 }
 
 .submit-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -71,7 +69,8 @@ table {
   margin-top: 20px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   color: black;
   padding: 12px;
@@ -80,7 +79,6 @@ th, td {
 
 th {
   background-color: #f89c1c;
-    /* color: black; */
 }
 
 tr:nth-child(even) {
@@ -88,7 +86,7 @@ tr:nth-child(even) {
 }
 
 .edit-btn {
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
   border: none;
   padding: 6px 10px;

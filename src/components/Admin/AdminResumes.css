@@ -3,8 +3,7 @@
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
-  /* background-color: orange;  */
-  color: black; /* 🖤 Text */
+  color: black;
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -44,36 +43,30 @@
   border: 1px solid #333;
 }
 
-/* Default (All) */
 .status-dropdown.all {
   background-color: #f5f5f5;
   color: #000;
 }
 
-/* Pending */
 .status-dropdown.pending {
   background-color: #fff8b3;
   color: #000;
 }
 
-/* Reviewed */
 .status-dropdown.reviewed {
   background-color: #d0e8ff;
   color: #003366;
 }
 
-/* Shortlisted */
 .status-dropdown.shortlisted {
   background-color: #c8facc;
   color: #1b5e20;
 }
 
-/* Rejected */
 .status-dropdown.rejected {
   background-color: #ffd1d1;
   color: #b71c1c;
 }
-
 
 .resumes-list {
   margin-top: 20px;
@@ -84,7 +77,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: left;
@@ -100,7 +94,6 @@ tr:nth-child(even) {
   background-color: #fff8e1;
 }
 
-/* Status dropdown inside table */
 td select {
   padding: 8px;
   border-radius: 4px;
@@ -110,14 +103,12 @@ td select {
   color: #000;
 }
 
-/* Button Container */
 td .action-buttons {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-/* Button Styles */
 button {
   padding: 8px 12px;
   border: none;
@@ -128,13 +119,11 @@ button {
   transition: background 0.3s ease;
 }
 
-/* Download Button */
 button.download-btn {
   background-color: #4caf50;
   color: white;
 }
 
-/* Delete Button */
 button.delete-btn {
   background-color: #e53935;
   color: white;

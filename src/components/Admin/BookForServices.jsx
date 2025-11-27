@@ -3,7 +3,6 @@ import * as XLSX from "xlsx";
 import "./BookForServices.css";
 import { BACKEND_URL } from "../utils/Url";
 
-
 const BookForServices = () => {
   const [bookings, setBookings] = useState([]);
   const [filteredBookings, setFilteredBookings] = useState([]);
@@ -21,9 +20,7 @@ const BookForServices = () => {
 
   const fetchServiceBookings = async () => {
     try {
-      const response = await fetch(
-        `${BACKEND_URL}/api/service-bookings`
-      );
+      const response = await fetch(`${BACKEND_URL}/api/service-bookings`);
       if (!response.ok) throw new Error("Failed to fetch service bookings");
       const data = await response.json();
       setBookings(data);
@@ -64,7 +61,6 @@ const BookForServices = () => {
         throw new Error(data.message || "Failed to update status");
       }
 
-      // Update the local state to reflect the change immediately
       setBookings((prevBookings) =>
         prevBookings.map((booking) =>
           booking._id === bookingId
@@ -80,9 +76,6 @@ const BookForServices = () => {
             : booking
         )
       );
-
-      // Optional: Show success message
-      // alert("Status updated successfully!");
     } catch (error) {
       console.error("Error updating status:", error);
       alert(error.message || "Failed to update status");
@@ -194,7 +187,6 @@ const BookForServices = () => {
     XLSX.writeFile(wb, "service_bookings.xlsx");
   };
 
-  // Pagination logic
   const indexOfLastBooking = currentPage * bookingsPerPage;
   const indexOfFirstBooking = indexOfLastBooking - bookingsPerPage;
   const currentBookings = filteredBookings.slice(
@@ -331,7 +323,6 @@ const BookForServices = () => {
         </div>
       )}
 
-      {/* Pagination */}
       {filteredBookings.length > bookingsPerPage && (
         <div className="pagination">
           <button

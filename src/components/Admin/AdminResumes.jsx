@@ -29,7 +29,7 @@ const AdminResumes = () => {
       await axios.put(`${BACKEND_URL}/api/resumes/${id}`, {
         status: newStatus,
       });
-      fetchResumes(); // Refresh the list
+      fetchResumes();
     } catch (error) {
       console.error("Error updating resume status:", error);
     }
@@ -39,7 +39,7 @@ const AdminResumes = () => {
     if (window.confirm("Are you sure you want to delete this resume?")) {
       try {
         await axios.delete(`${BACKEND_URL}/api/resumes/${id}`);
-        fetchResumes(); // Refresh the list
+        fetchResumes();
       } catch (error) {
         console.error("Error deleting resume:", error);
       }

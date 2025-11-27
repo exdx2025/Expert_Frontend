@@ -1,4 +1,4 @@
-/* components/Admin/SessionTimeoutModal.css */
+
 .session-timeout-overlay {
   position: fixed;
   top: 0;
@@ -108,7 +108,7 @@
   outline-offset: 2px;
 }
 
-/* Dark mode support */
+
 .admin-dashboard.dark .session-timeout-modal {
   background: #2d3748;
   color: #e2e8f0;

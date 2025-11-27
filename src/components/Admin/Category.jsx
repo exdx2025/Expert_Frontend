@@ -20,16 +20,13 @@ const Category = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [dateFilter, setDateFilter] = useState("");
   const [editIndex, setEditIndex] = useState(null);
   const formRef = useRef(null);
 
-  // Fetch all categories from the backend when the component mounts
   useEffect(() => {
     fetchCategories();
   }, []);
 
-  // Fetch all categories from the backend
   const fetchCategories = async () => {
     try {
       setLoading(true);
@@ -47,7 +44,6 @@ const Category = () => {
     }
   };
 
-  // Handle image upload
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -56,7 +52,6 @@ const Category = () => {
     }
   };
 
-  // Add a new category to the dropdown
   const handleAddCategory = () => {
     if (newCategory.trim() !== "" && !categories.includes(newCategory)) {
       setCategories([...categories, newCategory]);
@@ -64,7 +59,6 @@ const Category = () => {
     }
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !description || !category || !testNo) {
@@ -101,7 +95,7 @@ const Category = () => {
             ? "Category updated successfully!"
             : "Category created successfully!"
         );
-        fetchCategories(); // Refresh the list
+        fetchCategories();
         resetForm();
       } else {
         alert(data.error || "Failed to submit category");
@@ -112,7 +106,6 @@ const Category = () => {
     }
   };
 
-  // Handle edit action
   const handleEdit = (index) => {
     const selectedRow = categoriesList[index];
     setTestNo(selectedRow.testNo);
@@ -128,7 +121,6 @@ const Category = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  // Handle delete action
   const handleDelete = async (index) => {
     const categoryId = categoriesList[index]._id;
     try {
@@ -141,7 +133,7 @@ const Category = () => {
 
       if (response.ok) {
         alert("Category deleted successfully!");
-        fetchCategories(); // Refresh the list
+        fetchCategories();
       } else {
         alert("Failed to delete category");
       }
@@ -151,7 +143,6 @@ const Category = () => {
     }
   };
 
-  // Reset form fields
   const resetForm = () => {
     setImage(null);
     setTitle("");
@@ -162,12 +153,10 @@ const Category = () => {
     setEditIndex(null);
   };
 
-  // Handle search query change
   const handleSearchQueryChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  // Filter categories based on search query
   const filteredCategories = categoriesList.filter((item) => {
     const search = searchQuery.toLowerCase();
     return (
@@ -177,7 +166,6 @@ const Category = () => {
     );
   });
 
-  // Export to Excel
   const handleExportToExcel = () => {
     const ws = XLSX.utils.json_to_sheet(categoriesList);
     const wb = XLSX.utils.book_new();
@@ -191,7 +179,6 @@ const Category = () => {
         <h1 className="service-titles">Category List Form</h1>
 
         <div className="service-input-box1">
-          {/* Test No Input Field */}
           <div className="service-input-row">
             <div className="service-input-group">
               <label>Test No:</label>
@@ -206,7 +193,6 @@ const Category = () => {
             </div>
           </div>
 
-          {/* Category Select and Add Button */}
           <div className="service-input-row ">
             <div className="service-input-group">
               <label>Category:</label>
@@ -242,7 +228,6 @@ const Category = () => {
             </div>
           </div>
 
-          {/* Upload Image & Title */}
           <div className="service-input-row ">
             <div className="service-input-group">
               <label>Upload Image:</label>
@@ -267,7 +252,6 @@ const Category = () => {
             </div>
           </div>
 
-          {/* Description */}
           <div className="service-input-row">
             <div className="service-input-group">
               <label>Description:</label>
@@ -280,7 +264,6 @@ const Category = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
           <div className="submit-container">
             <button className="submit-button" onClick={handleSubmit}>
               {editIndex !== null ? "Update" : "Submit"}
@@ -289,12 +272,10 @@ const Category = () => {
         </div>
       </div>
 
-      {/* List Section */}
       <div className="ServiceList-box2">
         <div className="ServiceList-fetch-container">
           <div className="ServiceList-fetch-title">Categories List</div>
 
-          {/* Search and Export Button */}
           <div className="ServiceList-search-container">
             <input
               type="text"

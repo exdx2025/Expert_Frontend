@@ -64,7 +64,6 @@
     font-family: 'El Messiri', sans-serif;
 }
 
-/* Media Query for Mobile Screens */
 @media (max-width: 768px) {
     .about-main1 {
         padding-top: 17vh;

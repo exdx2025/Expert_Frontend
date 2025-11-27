@@ -5,7 +5,6 @@ function AllAdmins() {
   const [admins, setAdmins] = useState([]);
 
   useEffect(() => {
-    // Fetch admin data (Replace with your API call)
     const fetchAdmins = async () => {
       const adminData = [
         { id: 1, username: "admin1", email: "admin1@example.com" },
